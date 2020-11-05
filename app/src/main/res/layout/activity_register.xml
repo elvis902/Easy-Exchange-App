@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".RegisterActivity"
-    android:background="@drawable/loginbgr">
+    android:background="@drawable/signupbgr">
 
 <ImageView
     android:id="@+id/imageViewSignupMan"
@@ -19,25 +19,28 @@
         android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:textColor="@color/black"
-        android:textSize="28dp"
         android:layout_below="@+id/imageViewSignupMan"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:text="Sign up"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/textViewGreetingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewSignUp"
-        android:textColor="@color/offBlack"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"
         android:layout_marginTop="10dp"
-        android:text="Hey! Good to see you"/>
+        android:fontFamily="@font/roboto_mono_medium"
+        android:text="Hey! Good to see you"
+        android:textColor="@color/offBlack"
+        android:textSize="14dp" />
     <LinearLayout
         android:id="@+id/textFieldsHolder"
-        android:layout_width="290dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewGreetingText"
         android:layout_marginTop="30dp"
@@ -46,51 +49,57 @@
 
         <EditText
             android:id="@+id/editTextPersonName"
-            android:paddingStart="30dp"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:background="@drawable/rounded_text_fields"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/offBlack"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Name"
-            android:background="@drawable/rounded_text_fields"/>
+            android:inputType="textPersonName"
+            android:paddingStart="24dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/offBlack" />
+
         <EditText
             android:id="@+id/editTextEmail"
-            android:paddingStart="30dp"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:textColorHint="@color/offBlack"
             android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_text_fields"
             android:ems="10"
-            android:inputType="textEmailAddress"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Email"
-            android:background="@drawable/rounded_text_fields"/>
+            android:paddingStart="24dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/offBlack" />
+
         <EditText
             android:id="@+id/editTextPhoneNumber"
-            android:paddingStart="30dp"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:textColorHint="@color/offBlack"
             android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_text_fields"
             android:ems="10"
-            android:inputType="phone"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Phone no."
-            android:background="@drawable/rounded_text_fields"/>
+            android:inputType="phone"
+            android:paddingStart="24dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/offBlack" />
+
         <EditText
             android:id="@+id/editTextPassword"
-            android:paddingStart="30dp"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
             android:layout_height="45dp"
-            android:textColorHint="@color/offBlack"
-            android:ems="10"
             android:layout_marginTop="20dp"
-            android:inputType="numberPassword"
+            android:background="@drawable/rounded_text_fields"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Password"
-            android:background="@drawable/rounded_text_fields"/>
+            android:inputType="numberPassword"
+            android:paddingStart="24dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/offBlack" />
     </LinearLayout>
 
 
