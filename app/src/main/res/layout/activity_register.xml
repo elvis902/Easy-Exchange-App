@@ -13,7 +13,7 @@
     android:layout_height="wrap_content"
     android:src="@drawable/man_signup"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="60dp"/>
+    android:layout_marginTop="53dp"/>
 
     <TextView
         android:id="@+id/textViewSignUp"
@@ -55,7 +55,7 @@
             android:ems="10"
             android:fontFamily="@font/roboto_mono_medium"
             android:hint="Name"
-            android:inputType="textPersonName"
+            android:inputType="textNoSuggestions"
             android:paddingStart="24dp"
             android:textColor="@color/black"
             android:textColorHint="@color/offBlack" />
@@ -66,8 +66,8 @@
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_text_fields"
-            android:ems="10"
             android:fontFamily="@font/roboto_mono_medium"
+            android:inputType="textNoSuggestions"
             android:hint="Email"
             android:paddingStart="24dp"
             android:textColor="@color/black"
@@ -79,10 +79,10 @@
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_text_fields"
+            android:hint="Phone no."
             android:ems="10"
             android:fontFamily="@font/roboto_mono_medium"
-            android:hint="Phone no."
-            android:inputType="phone"
+            android:inputType="textNoSuggestions"
             android:paddingStart="24dp"
             android:textColor="@color/black"
             android:textColorHint="@color/offBlack" />
@@ -96,7 +96,20 @@
             android:ems="10"
             android:fontFamily="@font/roboto_mono_medium"
             android:hint="Password"
-            android:inputType="numberPassword"
+            android:inputType="textNoSuggestions"
+            android:paddingStart="24dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/offBlack" />
+        <EditText
+            android:id="@+id/editTextConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_text_fields"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
+            android:hint="Confirm Password"
+            android:inputType="textNoSuggestions"
             android:paddingStart="24dp"
             android:textColor="@color/black"
             android:textColorHint="@color/offBlack" />
