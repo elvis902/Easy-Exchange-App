@@ -30,7 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewSignUp"
+        android:textColor="@color/offBlack"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:text="Hey! Good to see you"/>
     <LinearLayout
@@ -45,17 +47,21 @@
         <EditText
             android:id="@+id/editTextPersonName"
             android:paddingStart="30dp"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textColorHint="@color/offBlack"
             android:hint="Name"
             android:background="@drawable/rounded_text_fields"/>
         <EditText
             android:id="@+id/editTextEmail"
             android:paddingStart="30dp"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:textColorHint="@color/offBlack"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textEmailAddress"
@@ -64,8 +70,10 @@
         <EditText
             android:id="@+id/editTextPhoneNumber"
             android:paddingStart="30dp"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:textColorHint="@color/offBlack"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="phone"
@@ -75,7 +83,9 @@
             android:id="@+id/editTextPassword"
             android:paddingStart="30dp"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="45dp"
+            android:textColorHint="@color/offBlack"
             android:ems="10"
             android:layout_marginTop="20dp"
             android:inputType="numberPassword"
@@ -90,8 +100,9 @@
         android:layout_height="60dp"
         android:text="CREATE"
         android:textSize="20sp"
-        android:background="@drawable/signup_button_bgr"
+        android:background="@color/magenta_0"
         android:layout_below="@+id/textFieldsHolder"
+        android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"/>
     <TextView
@@ -100,10 +111,10 @@
         android:layout_height="wrap_content"
         android:text="Already have an account ? "
         android:layout_below="@+id/buttonSignUp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="15dp"
         android:textColor="@color/offBlack"
-        android:textSize="16dp"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="16dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,7 +122,7 @@
         android:text="Login"
         android:textColor="@color/magenta_0"
         android:layout_below="@+id/buttonSignUp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="16dp"/>
 
 
 </RelativeLayout>
