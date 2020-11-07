@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/signupbgr"
     android:padding="20dp"
-    tools:context=".RegisterActivity"
-    android:background="@drawable/signupbgr">
+    tools:context=".RegisterActivity">
 
-<ImageView
-    android:id="@+id/imageViewSignupMan"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/man_signup"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="53dp"/>
+    <ImageView
+        android:id="@+id/imageViewSignupMan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:src="@drawable/man_signup" />
 
     <TextView
         android:id="@+id/textViewSignUp"
@@ -38,83 +38,85 @@
         android:text="Hey! Good to see you"
         android:textColor="@color/offBlack"
         android:textSize="18dp" />
+
     <LinearLayout
         android:id="@+id/textFieldsHolder"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewGreetingText"
-        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
         android:orientation="vertical">
 
 
         <EditText
             android:id="@+id/editTextPersonName"
-            android:layout_gravity="center"
             android:layout_width="252dp"
             android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_textfield"
             android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
+            android:hint="Name"
             android:inputType="textPersonName"
             android:padding="10dp"
-            android:background="@drawable/custom_textfield"
-            android:hint="Name"
-            android:textColorHint="@color/offBlack"
-            android:fontFamily="@font/roboto_mono_medium"/>
+            android:textColorHint="@color/offBlack" />
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:layout_gravity="center"
             android:layout_width="252dp"
             android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_gravity="center"
             android:layout_marginTop="14dp"
-            android:padding="10dp"
             android:background="@drawable/custom_textfield"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Email"
-            android:textColorHint="@color/offBlack"
-            android:fontFamily="@font/roboto_mono_medium"/>
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="@color/offBlack" />
 
         <EditText
             android:id="@+id/editTextPhoneNumber"
-            android:layout_gravity="center"
             android:layout_width="252dp"
             android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_gravity="center"
             android:layout_marginTop="14dp"
-            android:padding="10dp"
             android:background="@drawable/custom_textfield"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Phone no."
-            android:textColorHint="@color/offBlack"
-            android:fontFamily="@font/roboto_mono_medium" />
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="@color/offBlack" />
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:layout_gravity="center"
             android:layout_width="252dp"
             android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPassword"
+            android:layout_gravity="center"
             android:layout_marginTop="14dp"
-            android:padding="10dp"
             android:background="@drawable/custom_textfield"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Password"
-            android:textColorHint="@color/offBlack"
-            android:fontFamily="@font/roboto_mono_medium" />
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColorHint="@color/offBlack" />
+
         <EditText
             android:id="@+id/editTextConfirmPassword"
-            android:layout_gravity="center"
             android:layout_width="252dp"
             android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPassword"
+            android:layout_gravity="center"
             android:layout_marginTop="14dp"
-            android:padding="10dp"
             android:background="@drawable/custom_textfield"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono_medium"
             android:hint="Confirm Password"
-            android:textColorHint="@color/offBlack"
-            android:fontFamily="@font/roboto_mono_medium" />
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColorHint="@color/offBlack" />
     </LinearLayout>
 
 
@@ -130,26 +132,28 @@
         android:text="CREATE"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
     <TextView
         android:id="@+id/textViewAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already have an account ? "
         android:layout_below="@+id/buttonSignUp"
-        android:fontFamily="@font/roboto_mono_medium"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:text="Already have an account ? "
         android:textColor="@color/offBlack"
         android:textSize="14dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/textViewAccount"
-        android:text="Login"
-        android:fontFamily="@font/roboto_mono_medium"
-        android:textColor="@color/magenta_0"
         android:layout_below="@+id/buttonSignUp"
-        android:layout_marginTop="14dp"/>
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@id/textViewAccount"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:text="Login"
+        android:textColor="@color/magenta_0" />
 
 
 </RelativeLayout>
