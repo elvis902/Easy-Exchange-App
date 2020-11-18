@@ -4,65 +4,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:background="@drawable/loginbgr"
+    android:padding="10dp"
     tools:context=".LoginActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Login"
-        android:textColor="#000"
-        android:textSize="25dp"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal = "true"
-        android:layout_centerVertical = "true"
-        android:id = "@+id/emailTitle">
-        <EditText
-            android:id = "@+id/emailEnt"
-            android:inputType = "textEmailAddress"
-            android:hint="Email"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/login_man" />
+
+            <EditText
+                android:id="@+id/emailEnt"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:paddingStart="10dp"
+                android:fontFamily="@font/roboto_mono_medium"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circular_textfield"
+                android:hint="Email"
+                android:textColor="@color/black"
+                android:textColorHint="@color/offBlack"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/passwordEnt"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/offBlack"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_mono_medium"
+                android:paddingStart="10dp"
+                android:background="@drawable/circular_textfield"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+
+        <TextView
+            android:id="@+id/forgot_password_btn"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/offBlack"
+            android:layout_marginEnd="10dp"
+            android:text="Forgot Password?" />
+
+        <android.widget.Button
+            android:id="@+id/login_btn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="13dp"
+            android:background="@android:color/darker_gray"
+            android:backgroundTint="@color/magenta_0"
+            android:text="LOGIN"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            android:textColor="@color/login_white" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height ="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal = "true"
-        android:layout_centerVertical = "true"
-        android:id = "@+id/passwordTitle"
-        android:layout_below="@id/emailTitle"
-        app:passwordToggleEnabled="true">
-        <EditText
-            android:id = "@+id/passwordEnt"
-            android:inputType = "textPassword"
-            android:hint="Password"
-            android:layout_width="match_parent"
-            android:layout_height ="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="137dp"
+                android:text="Don't have an account ?"
+                android:textAlignment="center"
+                android:textColor="@color/offBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/not_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="243dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="5dp"
+                android:text="Sign Up"
+                android:textAlignment="center"
+                android:textColor="@color/magenta_0"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
 
 
-    <Button
-        android:id="@+id/login_btn"
-        android:text="Login"
-        android:layout_below="@id/passwordTitle"
-        android:layout_centerHorizontal="true"
-        style="@style/TextAppearance.AppCompat.Button"
-        android:drawableLeft="@drawable/ic_login_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or Connect with"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/offBlack"/>
 
-    <TextView
-        android:id="@+id/not_have_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No account ? Register "
-        android:textAlignment="center"
-        android:layout_below="@id/login_btn"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/design_default_color_primary_dark"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/fb_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fb"
+                android:scaleType="centerInside"
+                android:background="@drawable/fb_button_background" />
+
+            <ImageView
+                android:id="@+id/twitter_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/twitter"
+                android:scaleType="centerInside"
+                android:background="@drawable/twitter_button_background"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:id="@+id/google_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/google"
+                android:scaleType="centerInside"
+                android:background="@drawable/google_button_background"
+                android:layout_marginLeft="20dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
