@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button mLoginBtn;
     TextView mLoginTextView;
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
 
     @Override
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchMainActivity(String email, String name, String phone){
-        Toast.makeText(this, "Wait....Logging you in", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Please wait....Logging you in", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
         intent.putExtra("user_name",email);
         intent.putExtra("user_email",name);
@@ -76,7 +77,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 RegisterUser currentUser = snapshot.child(Uid).getValue(RegisterUser.class);
-                launchMainActivity(currentUser.getUserEmail(), currentUser.getUserName(), currentUser.getUserPhoneNo());
+                if(currentUser!=null){
+                    launchMainActivity(currentUser.getUserEmail(), currentUser.getUserName(), currentUser.getUserPhoneNo());
+                }
             }
 
             @Override
@@ -90,31 +93,26 @@ public class LoginActivity extends AppCompatActivity {
             String email = emailET.getText().toString();
             String password = passwordET.getText().toString();
 
-            if(!email.equals("") &&
-                email.contains("@") &&
+            if(!email.equals("")&&
                !password.equals("")){
-                    mAuth.signInWithEmailAndPassword(email,password)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                        FirebaseUser user = task.getResult().getUser();
-                                        searchUser(user.getUid());
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
+                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(LoginActivity.this,"An unexpected error occurred....Try again",Toast.LENGTH_SHORT).show();
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                firebaseUser=task.getResult().getUser();
+                                searchUser(firebaseUser.getUid());
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
-            }else{
-                Toast.makeText(this, "Please enter valid credentials", Toast.LENGTH_SHORT).show();
             }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        firebaseUser = mAuth.getCurrentUser();
         if(firebaseUser !=null){
             Toast.makeText(this, "Please wait", Toast.LENGTH_SHORT).show();
             searchUser(firebaseUser.getUid());
