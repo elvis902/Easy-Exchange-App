@@ -63,6 +63,7 @@
                     android:layout_height="22dp"
                     android:layout_marginStart="26dp"
                     android:layout_marginTop="13dp"
+                    android:id="@+id/nextButton"
                     android:src="@drawable/arrow"/>
 
             </LinearLayout>
@@ -106,13 +107,13 @@
                     android:textSize="12sp" />
 
                 <ImageView
-                    android:id="@+id/optionsMenu"
-                    android:layout_width="20dp"
+                    android:id="@+id/bookmark"
+                    android:layout_width="12dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="9dp"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginTop="1dp"
                     android:contentDescription="@string/todo"
-                    android:src="@android:drawable/btn_star_big_off" />
+                    android:src="@drawable/bookmark" />
 
             </LinearLayout>
 
