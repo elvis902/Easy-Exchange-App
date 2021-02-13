@@ -30,7 +30,7 @@
             app:cardCornerRadius="40dp"
             app:cardElevation="6dp">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="119dp"
                 android:layout_height="119dp"
                 android:layout_gravity="center_horizontal"
@@ -39,23 +39,23 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp">
 
+
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
+                    android:id="@+id/edit_pic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:baselineAlignBottom="false"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="80dp"
+                    android:backgroundTint="#D15046"
                     android:clickable="true"
-                    android:contentDescription="TODO"
                     android:focusable="true"
-                    android:scaleType="centerInside"
-                    android:src="@android:drawable/ic_menu_camera"
-                    android:tint="@color/white"
-                    app:backgroundTint="#CA5252"
-                    app:fabCustomSize="30dp">
-
-                </com.google.android.material.floatingactionbutton.FloatingActionButton>
+                    android:src="@drawable/camera"
+                    app:backgroundTint="#D15046"
+                    app:fabCustomSize="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/profile_pic"
@@ -80,7 +80,7 @@
 
                 </androidx.cardview.widget.CardView>
 
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout
                 android:layout_width="268dp"
