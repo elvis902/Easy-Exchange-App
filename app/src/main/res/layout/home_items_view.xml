@@ -64,6 +64,7 @@
                     android:layout_marginStart="26dp"
                     android:layout_marginTop="13dp"
                     android:id="@+id/nextButton"
+                    android:clickable="true"
                     android:src="@drawable/arrow"/>
 
             </LinearLayout>
@@ -112,6 +113,7 @@
                     android:layout_height="20dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="1dp"
+                    android:clickable="true"
                     android:contentDescription="@string/todo"
                     android:src="@drawable/bookmark" />
 
