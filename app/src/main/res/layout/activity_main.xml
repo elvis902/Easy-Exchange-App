@@ -12,35 +12,38 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60sp"
+        android:layout_marginBottom="65sp"
         android:id="@+id/home_item_recycle_view"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/mainAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="20dp"
-        app:fabCradleVerticalOffset="10dp"
-        android:backgroundTint="#FFFFFF"
         android:layout_gravity="bottom"
-        >
+        android:layout_marginStart="-14dp"
+        android:layout_marginEnd="-13dp"
+        android:backgroundTint="#FFFFFF"
+        app:fabCradleMargin="10dp"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="8dp">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_navigationBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:menu="@menu/bottom_navigation"
+            android:layout_marginEnd="10dp"
             android:background="#FFFFFF"
             app:itemIconTint="@color/black"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/main_navigationBar"/>
+            app:menu="@menu/bottom_navigation" />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
         android:backgroundTint="#F54360"
+        app:borderWidth="0dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/add"
         app:layout_anchor="@id/mainAppBar" />
 
