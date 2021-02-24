@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.easyexchangeapp.HomeFragment;
 import com.example.easyexchangeapp.R;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
@@ -17,7 +18,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     String data1[], data2[], data3[];
     int images[];
     Context context;
-    public ItemAdapter(Context ct, String price[], String description[], String address[], int img[]){
+    public ItemAdapter(Context ct, String[] price, String[] description, String[] address, int[] img){
         context = ct;
         data1 = price;
         data2 = description;

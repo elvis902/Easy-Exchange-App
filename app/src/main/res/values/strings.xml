@@ -5,4 +5,6 @@
     <string name="domain_gmail_com">domain@gmail.com</string>
     <string name="name">NAME</string>
     <string name="gh_1_nit_silchar">GH-1, NIT Silchar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
