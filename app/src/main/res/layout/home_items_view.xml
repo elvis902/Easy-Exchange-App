@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="368dp"
+    android:layout_height="142dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginRight="20dp"
+    android:elevation="13dp"
+    android:orientation="horizontal"
+    android:background="@drawable/mydrop_shadow">
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mydrop_shadow"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="13dp">
+
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="114dp"
+            android:layout_height="112dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="14dp"
+            android:padding="5dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/mydrop_shadow"
+            android:contentDescription="@string/todo"
+            android:elevation="13dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/itemPrice"
+                    android:textColor="@color/black"
+                    android:layout_width="160dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="138dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Price"
+                    android:textSize="23sp" />
+
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="13dp"
+                    android:id="@+id/nextButton"
+                    android:clickable="true"
+                    android:src="@drawable/arrow"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/itemDescription"
+                android:layout_width="200sp"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="10dp"
+                android:text="Description"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="138dp"
+                    android:layout_marginTop="1dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/placeholder" />
+
+                <TextView
+                    android:id="@+id/itemAddress"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="3dp"
+                    android:text="Address"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/bookmark"
+                    android:layout_width="12dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="1dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/bookmark" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+

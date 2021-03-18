@@ -71,7 +71,7 @@
             android:background="@android:color/darker_gray"
             android:backgroundTint="@color/magenta_0"
             android:text="LOGIN"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textAlignment="center"
             android:textColor="@color/login_white" />
 

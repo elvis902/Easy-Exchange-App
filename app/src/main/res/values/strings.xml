@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Easy Exchange App</string>
+    <string name="todo" translatable="false">todo</string>
+    <string name="_9191234567">+9191234567</string>
+    <string name="domain_gmail_com">domain@gmail.com</string>
+    <string name="name">NAME</string>
+    <string name="gh_1_nit_silchar">GH-1, NIT Silchar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

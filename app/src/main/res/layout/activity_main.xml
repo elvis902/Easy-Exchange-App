@@ -1,30 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <!--    <include-->
+    <!--        layout="@layout/tool_bar"/>-->
 
-    <TextView
-        android:id="@+id/textView"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65sp"
+        android:id="@+id/fragments_container"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/mainAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="-14dp"
+        android:layout_marginEnd="-13dp"
+        android:backgroundTint="#FFFFFF"
+        app:fabCradleMargin="10dp"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="8dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_navigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:background="#FFFFFF"
+            app:itemIconTint="@color/black"
+            app:menu="@menu/bottom_navigation" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="!Hi this will be the home screen!"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="#F54360"
+        app:borderWidth="0dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/add"
+        app:layout_anchor="@id/mainAppBar" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Log out"
-        android:id="@+id/logOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
