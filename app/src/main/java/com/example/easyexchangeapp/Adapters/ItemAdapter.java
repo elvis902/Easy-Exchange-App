@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp.myAdapter;
+package com.example.easyexchangeapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.easyexchangeapp.HomeFragment;
 import com.example.easyexchangeapp.R;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {

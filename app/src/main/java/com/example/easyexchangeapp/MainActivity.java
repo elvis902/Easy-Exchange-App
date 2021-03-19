@@ -6,12 +6,15 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.easyexchangeapp.Fragments.FavouriteFragment;
+import com.example.easyexchangeapp.Fragments.HomeFragment;
+import com.example.easyexchangeapp.Fragments.OrderFragment;
+import com.example.easyexchangeapp.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 

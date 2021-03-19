@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp;
+package com.example.easyexchangeapp.Fragments;
 
 import android.os.Bundle;
 
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.easyexchangeapp.myAdapter.ItemAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.easyexchangeapp.R;
+import com.example.easyexchangeapp.Adapters.ItemAdapter;
 
 
 public class HomeFragment extends Fragment {

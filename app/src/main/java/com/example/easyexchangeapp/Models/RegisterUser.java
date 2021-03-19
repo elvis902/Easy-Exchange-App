@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp;
+package com.example.easyexchangeapp.Models;
 
 public class RegisterUser {
     String userName;
