@@ -39,7 +39,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return favItems.size();
     }
 
     public void setFavItems(List<Product> favItems) {
