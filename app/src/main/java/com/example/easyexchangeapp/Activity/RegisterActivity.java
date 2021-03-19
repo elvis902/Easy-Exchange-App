@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp;
+package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Models.RegisterUser;
+import com.example.easyexchangeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -54,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -87,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         FirebaseUser user = task.getResult().getUser();
                                         makeUser(registerUser, user.getUid());
-                                        startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                         finish();
                                     }
                                 })

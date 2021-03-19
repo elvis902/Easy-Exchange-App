@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp;
+package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Models.RegisterUser;
+import com.example.easyexchangeapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
             }
         });
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void launchMainActivity(String email, String name, String phone){
         Toast.makeText(this, "Please wait....Logging you in", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("user_name",email);
         intent.putExtra("user_email",name);
         intent.putExtra("user_phone",phone);

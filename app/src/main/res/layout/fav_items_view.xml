@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="300dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
+        android:background="@color/offBlack"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/fav_itemNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="Item Name"
+            android:textSize="32sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/fav_itemDescriptionTV"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:text="Item Description"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/fav_itemPriceTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:text="Rs. 999"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
