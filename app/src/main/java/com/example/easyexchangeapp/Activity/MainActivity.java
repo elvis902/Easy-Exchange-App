@@ -1,4 +1,4 @@
-package com.example.easyexchangeapp;
+package com.example.easyexchangeapp.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -6,10 +6,12 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.easyexchangeapp.Activity.AddProduct;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.OrderFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
+import com.example.easyexchangeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),AddProduct.class));
+                startActivity(new Intent(getApplicationContext(), AddProduct.class));
             }
         });
 

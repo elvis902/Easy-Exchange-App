@@ -15,12 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHolder> {
-
-    List<Product> favItems = new ArrayList<>();
-
-    public FavItemAdapter() {
+    public interface OnItemClickListener {
+        void onItemClick(Product product);
     }
 
+    List<Product> favItems = new ArrayList<>();
+    private final OnItemClickListener listener;
+
+    public FavItemAdapter( OnItemClickListener listener) {
+        this.listener = listener;
+    }
+    
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +39,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
         holder.itemName.setText(favItems.get(position).getProdName());
         holder.itemDetail.setText(favItems.get(position).getProdDescription());
         holder.itemPrice.setText(favItems.get(position).getProdPrice());
+        holder.bind(favItems.get(position), listener);
     }
 
 
@@ -56,6 +62,15 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
             itemName = itemView.findViewById(R.id.fav_itemNameTV);
             itemDetail = itemView.findViewById(R.id.fav_itemDescriptionTV);
             itemPrice = itemView.findViewById(R.id.fav_itemPriceTV);
+        }
+
+        public void bind(Product product, OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(product);
+                }
+            });
         }
     }
 }
