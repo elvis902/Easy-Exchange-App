@@ -21,4 +21,5 @@
 
     <color name="magenta_0">#FD4664</color>
     <color name="login_white">#FDFDFD</color>
+    <color name="add_button_pink">#F54360</color>
 </resources>
