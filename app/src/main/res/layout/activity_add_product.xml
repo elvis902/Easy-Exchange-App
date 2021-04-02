@@ -71,7 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/addProduct_productImageIV"
+                        android:id="@+id/productImage"
                         android:layout_width="175dp"
                         android:layout_height="175dp"
                         android:background="@drawable/mydrop_shadow"
@@ -144,6 +144,7 @@
                         android:textSize="18sp" />
 
                     <EditText
+                        android:id="@+id/productName"
                         android:layout_width="335sp"
                         android:layout_height="50sp"
                         android:layout_marginStart="15dp"
@@ -180,6 +181,7 @@
 
 
                     <EditText
+                        android:id="@+id/productDescription"
                         android:layout_width="335sp"
                         android:layout_height="50sp"
                         android:layout_marginStart="15dp"
@@ -216,6 +218,7 @@
                         android:textSize="18dp" />
 
                     <EditText
+                        android:id="@+id/productPrice"
                         android:layout_width="340sp"
                         android:layout_height="50sp"
                         android:layout_marginStart="15dp"
@@ -251,6 +254,7 @@
                         android:textSize="18dp" />
 
                     <EditText
+                        android:id="@+id/productAddress"
                         android:layout_width="340sp"
                         android:layout_height="50sp"
                         android:layout_marginStart="15dp"
@@ -274,6 +278,7 @@
                     app:cardCornerRadius="10dp">
 
                     <Button
+                        android:id="@+id/addButton"
                         android:layout_width="380dp"
                         android:layout_height="60dp"
                         android:gravity="center"
