@@ -6,10 +6,10 @@
     tools:context=".Fragments.HomeFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_RV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/home_RV"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp" />
 
 
 </FrameLayout>

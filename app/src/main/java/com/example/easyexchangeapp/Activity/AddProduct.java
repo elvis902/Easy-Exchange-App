@@ -115,7 +115,13 @@ public class AddProduct extends AppCompatActivity {
     }
 
     public void saveImage(){
-        if(filePath!=null){
+        String prodName=productName.getText().toString();
+        String prodDescription=productDescription.getText().toString();
+        String prodPrice=productPrice.getText().toString();
+        if(filePath!=null&&
+            !prodName.equals("")&&
+            !prodPrice.equals("")&&
+            !prodDescription.equals("")){
             //progressBar.setVisibility(View.VISIBLE);
             final String uploadId=databaseReference.push().getKey();
             final StorageReference fileReference=storageReference.child(uploadId+"."+getFileExtension(filePath));
@@ -130,9 +136,6 @@ public class AddProduct extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     Uri downloadUri=uri;
-                                    String prodName=productName.getText().toString();
-                                    String prodDescription=productDescription.getText().toString();
-                                    String prodPrice=productPrice.getText().toString();
                                     String imageUrl=downloadUri.toString();
                                     String sellerName=currentUserName;
                                     String sellerEmail=currentUserEmail;

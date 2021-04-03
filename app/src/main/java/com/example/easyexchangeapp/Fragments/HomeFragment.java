@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.Adapters.ItemAdapter;
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment {
 
         homeRV = (RecyclerView) fragmentLayout.findViewById(R.id.home_RV);
 
-        reference = FirebaseDatabase.getInstance().getReference("uploaded_products");
+        reference = FirebaseDatabase.getInstance().getReference(Constants.STORAGE_LOCATION);
 
         eventListener = new ValueEventListener() {
             @Override
@@ -56,8 +57,9 @@ public class HomeFragment extends Fragment {
                 for(DataSnapshot prodSnap : snapshot.getChildren()){
                     Product tempModel = prodSnap.getValue(Product.class);
                     productList.add(tempModel);
-                    System.out.print(tempModel);
+                    System.out.print("TEST: "+tempModel.getItemKey());
                 }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "Error!", Toast.LENGTH_SHORT).show();
             }
         };
-        reference.addValueEventListener(eventListener);
+        reference.addListenerForSingleValueEvent(eventListener);
 
         adapter = new ItemAdapter(productList);
         homeRV.setLayoutManager(new LinearLayoutManager(getContext()));
