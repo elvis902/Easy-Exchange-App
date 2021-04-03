@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
+import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -66,9 +68,10 @@ public class LoginActivity extends AppCompatActivity {
     private void launchMainActivity(String email, String name, String phone){
         Toast.makeText(this, "Please wait....Logging you in", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.putExtra("user_name",email);
-        intent.putExtra("user_email",name);
-        intent.putExtra("user_phone",phone);
+        SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
+        manager.storeKeyValuePair(Constants.USER_EMAIL,email);
+        manager.storeKeyValuePair(Constants.USER_NAME,name);
+        manager.storeKeyValuePair(Constants.USER_PHONE,phone);
         startActivity(intent);
         finish();
     }
