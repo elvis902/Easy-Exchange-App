@@ -10,45 +10,57 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
-    String data1[], data2[], data3[];
-    int images[];
-    Context context;
-    public ItemAdapter(Context ct, String[] price, String[] description, String[] address, int[] img){
-        context = ct;
-        data1 = price;
-        data2 = description;
-        data3 = address;
-        images = img;
+    private List<Product> productsList;
+
+    public ItemAdapter(List<Product> productsList) {
+        this.productsList = productsList;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view =  inflater.inflate(R.layout.home_items_view, parent, false);
-        return new MyViewHolder(view);
+
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.home_items_view, parent, false);
+        MyViewHolder holder = new MyViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.itemPrice.setText(data1[position]);
-        holder.itemDescription.setText(data2[position]);
-        holder.itemAddress.setText(data3[position]);
-        holder.itemImage.setImageResource(images[position]);
+
+        holder.itemPrice.setText(productsList.get(position).getProdPrice());
+
+        holder.itemDescription.setText(productsList.get(position).getProdDescription());
+
+        holder.itemAddress.setText(productsList.get(position).getProdAddress());
+
+        Picasso.get().load(productsList.get(position)
+                .getImageUrl())
+                .fit()
+                .centerInside()
+                .into(holder.itemImage);
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return productsList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView itemPrice, itemDescription, itemAddress;
+        TextView itemPrice
+                , itemDescription
+                , itemAddress;
         ImageView itemImage;
 
         public MyViewHolder(@NonNull View itemView) {
