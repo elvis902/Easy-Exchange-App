@@ -7,10 +7,11 @@ public class Product {
     String imageUrl;
     String sellerName;
     String sellerEmail;
+    String prodAddress;
     String soldStatus;
     String itemKey;
 
-    public Product(String prodName, String prodDescription, String prodPrice, String imageUrl, String sellerName, String soldStatus, String itemKey,String sellerEmail) {
+    public Product(String prodName, String prodDescription, String prodPrice, String imageUrl, String sellerName, String soldStatus, String itemKey,String sellerEmail, String prodAddress) {
         this.prodName = prodName;
         this.sellerEmail=sellerEmail;
         this.prodDescription = prodDescription;
@@ -19,6 +20,7 @@ public class Product {
         this.sellerName = sellerName;
         this.soldStatus = soldStatus;
         this.itemKey = itemKey;
+        this.prodAddress = prodAddress;
     }
 
     public Product() {
@@ -88,4 +90,11 @@ public class Product {
         this.prodPrice = prodPrice;
     }
 
+    public String getProdAddress() {
+        return prodAddress;
+    }
+
+    public void setProdAddress(String prodAddress) {
+        this.prodAddress = prodAddress;
+    }
 }
