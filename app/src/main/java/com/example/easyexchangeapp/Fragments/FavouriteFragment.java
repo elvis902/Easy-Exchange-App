@@ -88,7 +88,8 @@ public class FavouriteFragment extends Fragment {
                 for(DataSnapshot itemSnap : snapshot.getChildren()){
                     Product tempProduct = itemSnap.getValue(Product.class);
                     key = tempProduct.getItemKey();
-                    favItemsList.add(tempProduct);
+                    if(favItemKeyList.contains(key))
+                        favItemsList.add(tempProduct);
                 }
                 favItemAdapter.notifyDataSetChanged();
             }
