@@ -1,6 +1,8 @@
 package com.example.easyexchangeapp.Activity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //        recyclerView = findViewById(R.id.home_item_recycle_view);
 //        recyclerView.setAdapter(itemAdapter);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
@@ -103,4 +107,32 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //         });
 // >>>>>>> master
     }
+
+    @Override
+    public  boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public  boolean onOptionsItemSelected (MenuItem item) {
+        switch (item.getItemId()) {
+            case  R.id.edit_profile:
+                Toast.makeText(this, "Edit Profile",Toast.LENGTH_SHORT).show();
+                return true;
+
+            case  R.id.setting:
+                Toast.makeText(this, "Settings",Toast.LENGTH_SHORT).show();
+                return true;
+
+            case  R.id.logout:
+                Toast.makeText(this, "Logged Out",Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
+
