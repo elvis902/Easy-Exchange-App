@@ -13,12 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
+
+    private FirebaseAuth auth;
+    private FirebaseUser user;
+    private DatabaseReference databaseReference;
 
     private List<Product> productsList;
     private onItemClickedListener mListener;
@@ -56,6 +64,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         holder.bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addToBookmarks(productsList.get(position));
                 Toast.makeText(context, "Bookmarked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -99,4 +108,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         void onNextClicked(int position);
 
     }
+
+
+    private void addToBookmarks(Product item) {
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        String userID = user.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID).child("bookmarks");
+        databaseReference.child(item.getItemKey()).setValue(item.getItemKey());
+    }
+
+
 }

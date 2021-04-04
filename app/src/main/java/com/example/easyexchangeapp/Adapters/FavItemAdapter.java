@@ -3,6 +3,7 @@ package com.example.easyexchangeapp.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,36 +11,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHolder> {
-    public interface OnItemClickListener {
-        void onItemClick(Product product);
+
+    private List<Product> favItems;
+
+    public FavItemAdapter(List<Product> favItems) {
+        this.favItems = favItems;
     }
 
-    List<Product> favItems = new ArrayList<>();
-    private final OnItemClickListener listener;
-
-    public FavItemAdapter( OnItemClickListener listener) {
-        this.listener = listener;
-    }
-    
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fav_items_view,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_items_view,parent,false);
         ViewHolder  holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.itemName.setText(favItems.get(position).getProdName());
-        holder.itemDetail.setText(favItems.get(position).getProdDescription());
         holder.itemPrice.setText(favItems.get(position).getProdPrice());
-        holder.bind(favItems.get(position), listener);
+
+        holder.itemDescription.setText(favItems.get(position).getProdDescription());
+
+        holder.itemAddress.setText(favItems.get(position).getProdAddress());
+
+        Picasso.get().load(favItems.get(position)
+                .getImageUrl())
+                .fit()
+                .centerInside()
+                .into(holder.itemImage);
     }
 
 
@@ -48,29 +53,21 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
         return favItems.size();
     }
 
-    public void setFavItems(List<Product> favItems) {
-        this.favItems = favItems;
-        notifyDataSetChanged();
-    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView itemName;
-        TextView itemDetail;
-        TextView itemPrice;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView itemPrice
+                , itemDescription
+                , itemAddress;
+        ImageView itemImage, nextButton, bookmark;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.fav_itemNameTV);
-            itemDetail = itemView.findViewById(R.id.fav_itemDescriptionTV);
-            itemPrice = itemView.findViewById(R.id.fav_itemPriceTV);
-        }
-
-        public void bind(Product product, OnItemClickListener listener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(product);
-                }
-            });
+            itemPrice = itemView.findViewById(R.id.itemPrice);
+            itemDescription = itemView.findViewById(R.id.itemDescription);
+            itemAddress = itemView.findViewById(R.id.itemAddress);
+            itemImage = itemView.findViewById(R.id.itemImage);
+            nextButton = itemView.findViewById(R.id.nextButton);
+            bookmark = itemView.findViewById(R.id.bookmark);
         }
     }
 }
