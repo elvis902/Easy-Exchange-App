@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,10 +21,13 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
     private List<Product> productsList;
+    private onItemClickedListener mListener;
+    private Context context;
 
-    public ItemAdapter(List<Product> productsList) {
+    public ItemAdapter(List<Product> productsList, onItemClickedListener mListener, Context context) {
         this.productsList = productsList;
-        notifyDataSetChanged();
+        this.mListener = mListener;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.home_items_view, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
+        MyViewHolder holder = new MyViewHolder(view,mListener);
         return holder;
     }
 
@@ -49,6 +53,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 .fit()
                 .centerInside()
                 .into(holder.itemImage);
+        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Bookmarked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -56,19 +66,37 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         return productsList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    static public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView itemPrice
                 , itemDescription
                 , itemAddress;
-        ImageView itemImage;
+        ImageView itemImage, nextButton, bookmark;
+        onItemClickedListener itemClicked;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, onItemClickedListener itemClicked) {
             super(itemView);
             itemPrice = itemView.findViewById(R.id.itemPrice);
             itemDescription = itemView.findViewById(R.id.itemDescription);
             itemAddress = itemView.findViewById(R.id.itemAddress);
             itemImage = itemView.findViewById(R.id.itemImage);
+            nextButton = itemView.findViewById(R.id.nextButton);
+            bookmark = itemView.findViewById(R.id.bookmark);
+            this.itemClicked = itemClicked;
+
+            nextButton.setOnClickListener(this);
+            bookmark.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            itemClicked.onNextClicked(getAdapterPosition());
+        }
+    }
+
+    public interface onItemClickedListener{
+
+        void onNextClicked(int position);
+
     }
 }

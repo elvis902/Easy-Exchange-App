@@ -1,5 +1,6 @@
 package com.example.easyexchangeapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Activity.ProductDetails;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
@@ -29,7 +31,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ItemAdapter.onItemClickedListener{
 
     private RecyclerView homeRV;
     private DatabaseReference reference;
@@ -69,11 +71,23 @@ public class HomeFragment extends Fragment {
         };
         reference.addListenerForSingleValueEvent(eventListener);
 
-        adapter = new ItemAdapter(productList);
+        adapter = new ItemAdapter(productList,this,getContext());
+        adapter.notifyDataSetChanged();
         homeRV.setLayoutManager(new LinearLayoutManager(getContext()));
         homeRV.hasFixedSize();
         homeRV.setAdapter(adapter);
 
         return fragmentLayout;
     }
+
+
+    @Override
+    public void onNextClicked(int position) {
+        Intent intent = new Intent(getContext(),ProductDetails.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("item_bundle",productList.get(position));
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 }

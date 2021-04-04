@@ -1,6 +1,8 @@
 package com.example.easyexchangeapp.Models;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     String prodName;
     String prodDescription;
     String prodPrice;
