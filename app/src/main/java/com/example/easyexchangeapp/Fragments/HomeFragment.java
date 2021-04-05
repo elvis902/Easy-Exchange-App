@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment implements ItemAdapter.onItemClickedL
                 Toast.makeText(getContext(), "Error!", Toast.LENGTH_SHORT).show();
             }
         };
-        reference.addListenerForSingleValueEvent(eventListener);
+        reference.addValueEventListener(eventListener);
 
         adapter = new ItemAdapter(productList,this,getContext());
         adapter.notifyDataSetChanged();

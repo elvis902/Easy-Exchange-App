@@ -99,7 +99,7 @@ public class FavouriteFragment extends Fragment {
 
             }
         };
-        databaseReference.addListenerForSingleValueEvent(eventListener);
+        databaseReference.addValueEventListener(eventListener);
         System.out.print("Size - "+favItemsList.size());
     }
 
