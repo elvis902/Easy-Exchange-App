@@ -1,9 +1,13 @@
 package com.example.easyexchangeapp.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterUser {
     String userName;
     String userEmail;
     String userPhoneNo;
+    List<String> chatRooms=new ArrayList<>();
 
     public  RegisterUser(){
 
@@ -13,6 +17,14 @@ public class RegisterUser {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPhoneNo = userPhoneNo;
+    }
+
+    public List<String> getChatRooms() {
+        return chatRooms;
+    }
+
+    public void setChatRooms(List<String> chatRooms) {
+        this.chatRooms = chatRooms;
     }
 
     public String getUserName() {

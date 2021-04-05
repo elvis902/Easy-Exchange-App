@@ -8,13 +8,15 @@ public class Product implements Serializable {
     String prodPrice;
     String imageUrl;
     String sellerName;
+    String sellerID;
     String sellerEmail;
     String prodAddress;
     String soldStatus;
     String itemKey;
 
-    public Product(String prodName, String prodDescription, String prodPrice, String imageUrl, String sellerName, String soldStatus, String itemKey,String sellerEmail, String prodAddress) {
+    public Product(String prodName, String prodDescription, String prodPrice, String imageUrl, String sellerName, String soldStatus, String itemKey,String sellerEmail, String prodAddress,String sellerID) {
         this.prodName = prodName;
+        this.sellerID=sellerID;
         this.sellerEmail=sellerEmail;
         this.prodDescription = prodDescription;
         this.prodPrice = prodPrice;
@@ -26,6 +28,15 @@ public class Product implements Serializable {
     }
 
     public Product() {
+
+    }
+
+    public String getSellerID() {
+        return sellerID;
+    }
+
+    public void setSellerID(String sellerID) {
+        this.sellerID = sellerID;
     }
 
     public String getSellerName() {
