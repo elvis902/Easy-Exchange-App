@@ -102,7 +102,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="140dp"
-                        android:text="@string/name"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -115,7 +114,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
-                        android:text="@string/_9191234567"
                         android:textColor="#505050"
                         android:textSize="15sp" />
 
@@ -128,7 +126,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="2dp"
-                        android:text="@string/domain_gmail_com"
                         android:textColor="#505050"
                         android:textSize="16sp" />
 
@@ -141,7 +138,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="3dp"
-                        android:text="@string/gh_1_nit_silchar"
                         android:textColor="#505050"
                         android:textSize="16sp" />
 
