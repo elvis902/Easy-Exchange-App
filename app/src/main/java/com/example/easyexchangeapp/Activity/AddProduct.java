@@ -50,7 +50,7 @@ public class AddProduct extends AppCompatActivity {
     private FloatingActionButton selectImage;
     private Button saveProductButton;
 
-    private String currentUserName,currentUserEmail,currentUserPhNo;
+    private String currentUserName,currentUserEmail,currentUserId;
 
     private Uri filePath;
     private StorageReference storageReference;
@@ -64,7 +64,7 @@ public class AddProduct extends AppCompatActivity {
         setContentView(R.layout.activity_add_product);
 
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
-        currentUserPhNo=manager.getValue(Constants.USER_PHONE);
+        currentUserId=manager.getValue(Constants.USER_ID);
         currentUserEmail=manager.getValue(Constants.USER_EMAIL);
         currentUserName=manager.getValue(Constants.USER_NAME);
 
@@ -142,7 +142,7 @@ public class AddProduct extends AppCompatActivity {
                                     String soldStatus="false";
                                     String prodAddress = productAddress.getText().toString();
                                     String itemKey=uploadId;
-                                    Product product=new Product(prodName,prodDescription,prodPrice,imageUrl,sellerName,soldStatus,itemKey,sellerEmail,prodAddress);
+                                    Product product=new Product(prodName,prodDescription,prodPrice,imageUrl,sellerName,soldStatus,itemKey,sellerEmail,prodAddress,currentUserId);
                                     databaseReference.child(uploadId).setValue(product);
                                     finish();
                                 }
