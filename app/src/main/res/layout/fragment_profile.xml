@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/profile_page"
@@ -95,53 +95,49 @@
                     android:layout_marginBottom="12dp">
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/profile_name"
                         style="@style/Widget.AppCompat.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="140dp"
-                        android:text="@string/name"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/phone_no"
+                        android:id="@+id/profile_phone_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/name"
+                        android:layout_below="@id/profile_name"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
-                        android:text="@string/_9191234567"
                         android:textColor="#505050"
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/email_id"
+                        android:id="@+id/profile_email_id"
                         style="@style/Widget.AppCompat.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/phone_no"
+                        android:layout_below="@id/profile_phone_no"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="2dp"
-                        android:text="@string/domain_gmail_com"
                         android:textColor="#505050"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/address"
+                        android:id="@+id/profile_address"
                         style="@style/Widget.AppCompat.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/email_id"
+                        android:layout_below="@id/profile_email_id"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="3dp"
-                        android:text="@string/gh_1_nit_silchar"
                         android:textColor="#505050"
                         android:textSize="16sp" />
 
@@ -152,7 +148,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="182dp"
                         android:layout_marginEnd="63dp"
-                        android:layout_toStartOf="@id/phone_no"
+                        android:layout_toStartOf="@id/profile_phone_no"
                         android:contentDescription="TODO"
                         android:tint="#090808"
                         app:srcCompat="@android:drawable/ic_menu_call" />
@@ -164,7 +160,7 @@
                         android:layout_below="@+id/call_icon"
                         android:layout_marginTop="3dp"
                         android:layout_marginEnd="63dp"
-                        android:layout_toStartOf="@+id/phone_no"
+                        android:layout_toStartOf="@+id/profile_phone_no"
                         android:contentDescription="TODO"
                         android:tint="#505050"
                         app:srcCompat="@android:drawable/ic_dialog_email" />
@@ -173,10 +169,10 @@
                         android:id="@+id/address_icon"
                         android:layout_width="20dp"
                         android:layout_height="18dp"
-                        android:layout_below="@+id/email_id"
+                        android:layout_below="@+id/profile_email_id"
                         android:layout_marginTop="3dp"
                         android:layout_marginEnd="48dp"
-                        android:layout_toStartOf="@+id/address"
+                        android:layout_toStartOf="@+id/profile_address"
                         android:contentDescription="TODO"
                         android:tint="#505050"
                         app:srcCompat="@drawable/placeholder" />
@@ -295,6 +291,7 @@
                             android:textSize="20dp" />
 
                         <ImageView
+                            android:id="@+id/profile_to_myAds"
                             android:layout_width="29dp"
                             android:layout_height="26dp"
                             android:layout_marginLeft="195dp"
