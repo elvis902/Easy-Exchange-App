@@ -1,5 +1,6 @@
 package com.example.easyexchangeapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,8 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.easyexchangeapp.Activity.MyAds;
 import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +32,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private RegisterUser user;
+    private ImageView toMyAds;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -42,8 +47,16 @@ public class ProfileFragment extends Fragment {
         userName = view.findViewById(R.id.profile_name);
         userMail = view.findViewById(R.id.profile_email_id);
         userPhone = view.findViewById(R.id.profile_phone_no);
+        toMyAds = view.findViewById(R.id.profile_to_myAds);
         //Getting user data
         fetchUserDetails();
+
+        toMyAds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMyAds();
+            }
+        });
 
         return view;
 
@@ -67,5 +80,11 @@ public class ProfileFragment extends Fragment {
             }
         };
         reference.addListenerForSingleValueEvent(listener);
+    }
+
+    public void goToMyAds(){
+        Intent intent = new Intent(getContext(), MyAds.class);
+        intent.putExtra("user_mail",userMail.getText());
+        startActivity(intent);
     }
 }
