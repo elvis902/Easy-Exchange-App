@@ -65,7 +65,6 @@ public class FavouriteFragment extends Fragment {
         getFavItemKeys();
 
         //Getting the fav items
-        getFavItems();
 
         //Putting into the RV
         favItemAdapter = new FavItemAdapter(favItemsList,getContext());
@@ -118,13 +117,14 @@ public class FavouriteFragment extends Fragment {
                     favItemKeyList.add(tempItemKey);
                     System.out.println( "---- "+ tempItemKey + " ---- \n");
                 }
+                getFavItems();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(), "An unexpected error occurred!", Toast.LENGTH_SHORT).show();
             }
         };
-        databaseReference.addListenerForSingleValueEvent(eventListener);
+        databaseReference.addValueEventListener(eventListener);
 
     }
 }
