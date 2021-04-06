@@ -78,17 +78,17 @@ public class ProductDetails extends AppCompatActivity {
                 for(DataSnapshot temp: snapshot.getChildren()){
                     chatRoomIds.put(temp.getKey(),temp.getKey());
                 }
-                if(!chatRoomIds.containsKey(userId+"**"+clientId)&&!chatRoomIds.containsKey(clientId+"**"+userId)){
+                if(!chatRoomIds.containsKey(userId+"**"+clientId)&&!chatRoomIds.containsKey(clientId+"--"+userId)){
                     System.out.println("TEST: Needs to be Created!");
-                    chatRoomId=userId+"**"+clientId;
+                    chatRoomId=userId+"--"+clientId;
                     chatReference.child(chatRoomId).setValue(chatRoomId);
                     databaseReference.child(clientId).child("chatRooms").child(chatRoomId).setValue(chatRoomId);
-                }else if (chatRoomIds.containsKey(userId+"**"+clientId)){
+                }else if (chatRoomIds.containsKey(userId+"--"+clientId)){
                     System.out.println("TEST: Already created!");
-                    chatRoomId=userId+"**"+clientId;
-                }else if(chatRoomIds.containsKey(clientId+"**"+userId)){
+                    chatRoomId=userId+"--"+clientId;
+                }else if(chatRoomIds.containsKey(clientId+"--"+userId)){
                     System.out.println("TEST: Already created!");
-                    chatRoomId=clientId+"**"+userId;
+                    chatRoomId=clientId+"--"+userId;
                 }
                 Intent intent=new Intent(getApplicationContext(),ChatActivity.class);
                 intent.putExtra("chat-room",chatRoomId);

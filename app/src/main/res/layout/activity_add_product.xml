@@ -79,7 +79,6 @@
                         android:contentDescription="@string/todo"
                         android:elevation="30dp"
                         android:padding="10dp"
-                        android:src="@drawable/school_bag"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"

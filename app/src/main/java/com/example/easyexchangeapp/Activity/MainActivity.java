@@ -8,10 +8,9 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.easyexchangeapp.Activity.AddProduct;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
-import com.example.easyexchangeapp.Fragments.OrderFragment;
+import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
 import com.example.easyexchangeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new FavouriteFragment();
                 break;
             case R.id.nav_orders:
-                fragment = new OrderFragment();
+                fragment = new ChatFragment();
                 break;
             case R.id.nav_profile:
                 fragment = new ProfileFragment();
