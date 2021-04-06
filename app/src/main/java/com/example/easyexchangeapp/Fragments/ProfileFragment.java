@@ -1,6 +1,8 @@
 package com.example.easyexchangeapp.Fragments;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +61,9 @@ public class ProfileFragment extends Fragment {
     private ImageView profilePic;
     private String picUrl;
 
+    private AlertDialog.Builder builder;
+    private ProgressBar uploadProgress;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -74,6 +80,8 @@ public class ProfileFragment extends Fragment {
         toMyAds = view.findViewById(R.id.profile_to_myAds);
         editPic = view.findViewById(R.id.edit_pic);
         profilePic = view.findViewById(R.id.user_profilePic);
+        uploadProgress = view.findViewById(R.id.progress_picUpload);
+        uploadProgress.setVisibility(View.INVISIBLE);
         storageRef = FirebaseStorage.getInstance().getReference("profile_pics");
         //Getting user data
         fetchUserDetails();
@@ -85,6 +93,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        builder = new AlertDialog.Builder(getContext());
         editPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +121,25 @@ public class ProfileFragment extends Fragment {
                 && data.getData() != null) {
             imageFilePath = data.getData();
             profilePic.setVisibility(View.VISIBLE);
-            uploadImage(imageFilePath);
+            builder.setMessage("Are you sure ?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            uploadProgress.setVisibility(View.VISIBLE);
+                            uploadImage(imageFilePath);
+                            uploadProgress.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getContext(), "Updating Profile Pic...", Toast.LENGTH_SHORT).show();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.setTitle("Alert!");
+            alert.show();
         }
 
     }
