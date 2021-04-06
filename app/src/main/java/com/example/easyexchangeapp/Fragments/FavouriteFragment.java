@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
@@ -67,7 +68,7 @@ public class FavouriteFragment extends Fragment {
         getFavItems();
 
         //Putting into the RV
-        favItemAdapter = new FavItemAdapter(favItemsList);
+        favItemAdapter = new FavItemAdapter(favItemsList,getContext());
         favItemAdapter.notifyDataSetChanged();
         favItemsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         favItemsRV.hasFixedSize();
