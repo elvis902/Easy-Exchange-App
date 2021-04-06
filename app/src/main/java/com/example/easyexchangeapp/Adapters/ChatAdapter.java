@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,16 +20,19 @@ import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import java.util.ArrayList;
 import java.util.List;
 
-class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
     List<ChatModel> chatModelList=new ArrayList<>();
     Context context;
     String currentUID;
 
-    public ChatAdapter(Context context,List<ChatModel> chatModelList){
+    public ChatAdapter(Context context){
         this.context=context;
-        this.chatModelList=chatModelList;
         SharedPrefManager manager=new SharedPrefManager(context);
         currentUID=manager.getValue(Constants.USER_ID);
+    }
+
+    public void setChatModelList(List<ChatModel> chatModelList) {
+        this.chatModelList = chatModelList;
     }
 
     @NonNull
@@ -41,12 +46,13 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChatAdapter.MyViewHolder holder, int position) {
         ChatModel currentChat=chatModelList.get(position);
+        System.out.println("RV: "+currentUID);
         if(currentUID.equals(currentChat.getSenderID())){
             holder.senderMessage.setText(currentChat.getMessage());
             holder.senderName.setText(currentChat.getSender());
             holder.clientMessage.setText("");
             holder.clientName.setText("");
-        }else{
+        }else {
             holder.senderMessage.setText("");
             holder.senderName.setText("");
             holder.clientMessage.setText(currentChat.getMessage());
@@ -56,19 +62,21 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return chatModelList.size();
     }
 
     static public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView clientName, clientMessage, senderName,senderMessage;
-
+        LinearLayout client,sender;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             clientName=itemView.findViewById(R.id.chat_clientName);
             clientMessage=itemView.findViewById(R.id.chat_clientMessage);
             senderName=itemView.findViewById(R.id.chat_senderName);
             senderMessage=itemView.findViewById(R.id.chat_senderMessage);
+            client=itemView.findViewById(R.id.clientSideMsg);
+            sender=itemView.findViewById(R.id.senderSideMsg);
         }
 
     }

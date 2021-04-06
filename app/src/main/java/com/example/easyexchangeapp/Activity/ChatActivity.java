@@ -2,10 +2,19 @@ package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.easyexchangeapp.Adapters.ChatAdapter;
+import com.example.easyexchangeapp.Adapters.ItemAdapter;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.ChatModel;
 import com.example.easyexchangeapp.R;
@@ -16,46 +25,71 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private String clientId,userId;
+    private String clientName,userName,chatRoomId,userId;
     private DatabaseReference databaseReference;
+    private RecyclerView chatRV;
+    private EditText messageBody;
+    private ImageButton sendButton;
+    private ChatAdapter chatAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
+        chatRV=findViewById(R.id.chatRecyclerView);
+        messageBody=findViewById(R.id.chatMessageText);
+        sendButton=findViewById(R.id.chatSendButton);
+
+
+
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
 
         Intent intent=getIntent();
-        clientId=intent.getStringExtra(Constants.USER_ID);
+        clientName=intent.getStringExtra("client");
+        userName=manager.getValue(Constants.USER_NAME);
+        chatRoomId=intent.getStringExtra("chat-room");
         userId=manager.getValue(Constants.USER_ID);
+        chatAdapter = new ChatAdapter(getApplicationContext());
+        chatRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        chatRV.hasFixedSize();
+        chatRV.setAdapter(chatAdapter);
 
-
-    }
-
-    private String checkRoomAvailability(){
-        DatabaseReference chatReference=databaseReference.child(userId).child("chat-rooms");
-        chatReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId);
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<ChatModel> chatList=new ArrayList<>();
                 for(DataSnapshot temp: snapshot.getChildren()){
-                    if(!temp.hasChild(userId+"**"+clientId)&&!temp.hasChild(clientId+"**"+userId)){
-                        chatReference.child(userId+"**"+clientId);
-                        databaseReference.child(clientId).child("chat-rooms").child(userId+"**"+clientId);
-                    }
+                    chatList.add(temp.getValue(ChatModel.class));
+                    System.out.println("message: "+temp.getValue(ChatModel.class).getMessage());
                 }
+                chatAdapter.setChatModelList(chatList);
+                chatAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(),"Error getting messages!",Toast.LENGTH_LONG).show();
             }
         });
-        return "";
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message=messageBody.getText().toString();
+                if(!message.equals("")){
+                    databaseReference.push().setValue(new ChatModel(userName,message,userId));
+                    messageBody.setText("");
+                }
+            }
+        });
     }
+
+
 
 }

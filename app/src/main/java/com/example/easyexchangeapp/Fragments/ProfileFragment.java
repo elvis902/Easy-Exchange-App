@@ -79,7 +79,7 @@ public class ProfileFragment extends Fragment {
 
             }
         };
-        reference.addListenerForSingleValueEvent(listener);
+        reference.addValueEventListener(listener);
     }
 
     public void goToMyAds(){
