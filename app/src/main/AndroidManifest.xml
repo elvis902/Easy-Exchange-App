@@ -11,19 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyExchangeApp">
-        <activity android:name=".Activity.ChatActivity"></activity>
-        <activity android:name=".Activity.MyAds"></activity>
-        <activity android:name=".Activity.ProductDetails" />
-        <activity android:name=".Activity.AddProduct" />
-        <activity
-            android:name=".Activity.LoginActivity"
+        <activity android:name=".SplashScreen"
             android:theme="@style/Theme.Design.Light.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+        <activity android:name=".Activity.ChatActivity" />
+        <activity android:name=".Activity.MyAds" />
+        <activity android:name=".Activity.ProductDetails" />
+        <activity android:name=".Activity.AddProduct" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
     </application>
