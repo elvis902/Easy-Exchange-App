@@ -1,34 +1,29 @@
 package com.example.easyexchangeapp.Activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
-import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
 import com.example.easyexchangeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
-
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
   BottomNavigationView bottomNavigation;
-    Button logOut;
+//  Button logOut;
     FloatingActionButton floatingActionButton;
     private FirebaseAuth mAuth;
     @Override
@@ -36,17 +31,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
 
         bottomNavigation = findViewById(R.id.main_navigationBar);
         floatingActionButton = findViewById(R.id.fab);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddProduct.class));
-            }
-        });
+        floatingActionButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddProduct.class)));
 
         loadFragment(new HomeFragment());
         //price = getResources().getStringArray(R.array.price);
@@ -61,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(MenuItem item){
         Fragment fragment = null;
@@ -94,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return false;
 // =======
-//         mAuth = FirebaseAuth.getInstance();
+
 //         logOut = findViewById(R.id.logOut);
 //         logOut.setOnClickListener(new View.OnClickListener() {
 //             @Override
@@ -114,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public  boolean onOptionsItemSelected (MenuItem item) {
         switch (item.getItemId()) {
@@ -125,13 +118,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Toast.makeText(this, "Settings",Toast.LENGTH_SHORT).show();
                 return true;
 
-            case  R.id.logout:
-                Toast.makeText(this, "Logged Out",Toast.LENGTH_SHORT).show();
-                return true;
+            case  R.id.logout:{
+                mAuth.signOut();
+                signOutUser ();
+            }
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void signOutUser() {
+        Intent loginActivity = new Intent(MainActivity.this, LoginActivity.class);
+        loginActivity.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity( loginActivity );
+        finish();
     }
 }
 
