@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.easyexchangeapp.Adapters.ChatAdapter;
@@ -29,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
-
+    private DatabaseReference usernameRef;
     private String clientName,userName,chatRoomId,userId;
     private DatabaseReference databaseReference;
     private RecyclerView chatRV;
@@ -58,6 +62,24 @@ public class ChatActivity extends AppCompatActivity {
         chatRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
+
+
+        usernameRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        usernameRef.child(clientName).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot tempSnap: snapshot.getChildren()){
+                    if(tempSnap.getKey().equals("userName")){
+                        setTitle(tempSnap.getValue(String.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId);
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -88,6 +110,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
+        
     }
 
 

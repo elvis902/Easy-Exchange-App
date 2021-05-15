@@ -16,6 +16,7 @@ import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
 import com.example.easyexchangeapp.R;
+import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -120,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case  R.id.logout:{
                 mAuth.signOut();
+                SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
+                manager.clearAll();
                 signOutUser ();
             }
 
