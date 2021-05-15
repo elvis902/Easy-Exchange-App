@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
-
+    private DatabaseReference usernameRef;
     private String clientName,userName,chatRoomId,userId;
     private DatabaseReference databaseReference;
     private RecyclerView chatRV;
@@ -63,7 +63,25 @@ public class ChatActivity extends AppCompatActivity {
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId).child("messages");
+
+        usernameRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        usernameRef.child(clientName).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot tempSnap: snapshot.getChildren()){
+                    if(tempSnap.getKey().equals("userName")){
+                        setTitle(tempSnap.getValue(String.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

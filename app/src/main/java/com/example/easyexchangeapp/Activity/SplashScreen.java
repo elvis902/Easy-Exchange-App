@@ -82,11 +82,7 @@ public class SplashScreen extends AppCompatActivity {
         }, 2000);
 
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-    }
     private void launchMainActivity(String email, String name, String phone){
         Intent intent = new Intent(SplashScreen.this, MainActivity.class);
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());

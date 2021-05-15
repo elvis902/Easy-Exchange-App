@@ -39,7 +39,7 @@ public class ProductDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
-
+        setTitle("Loading...");
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
 
 
@@ -60,6 +60,8 @@ public class ProductDetails extends AppCompatActivity {
         sellerName=item.getSellerName();
         assert item != null;
 
+
+
         displayInfo(item);
 
         chatBuyButton.setOnClickListener(new View.OnClickListener() {
@@ -79,15 +81,12 @@ public class ProductDetails extends AppCompatActivity {
                     chatRoomIds.put(temp.getKey(),temp.getKey());
                 }
                 if(!chatRoomIds.containsKey(userId+"**"+clientId)&&!chatRoomIds.containsKey(clientId+"--"+userId)){
-                    System.out.println("TEST: Needs to be Created!");
                     chatRoomId=userId+"--"+clientId;
                     chatReference.child(chatRoomId).setValue(chatRoomId);
                     databaseReference.child(clientId).child("chatRooms").child(chatRoomId).setValue(chatRoomId);
                 }else if (chatRoomIds.containsKey(userId+"--"+clientId)){
-                    System.out.println("TEST: Already created!");
                     chatRoomId=userId+"--"+clientId;
                 }else if(chatRoomIds.containsKey(clientId+"--"+userId)){
-                    System.out.println("TEST: Already created!");
                     chatRoomId=clientId+"--"+userId;
                 }
                 Intent intent=new Intent(getApplicationContext(),ChatActivity.class);
@@ -108,6 +107,21 @@ public class ProductDetails extends AppCompatActivity {
         prodAddress.setText(item.getProdAddress());
         prodPrice.setText(item.getProdPrice());
         prodDescription.setText(item.getProdDescription());
+        databaseReference.child(item.getSellerID()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot tempSnap: snapshot.getChildren()){
+                    if(tempSnap.getKey().equals("userName")){
+                        setTitle("Uploaded by: "+tempSnap.getValue(String.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         Picasso.get().
                 load(item.getImageUrl()).
                 centerInside().
