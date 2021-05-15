@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.easyexchangeapp.Adapters.ChatAdapter;
@@ -59,7 +63,7 @@ public class ChatActivity extends AppCompatActivity {
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId).child("messages");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,6 +92,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
+        
     }
 
 
