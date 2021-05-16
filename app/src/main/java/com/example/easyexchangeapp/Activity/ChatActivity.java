@@ -21,6 +21,7 @@ import com.example.easyexchangeapp.Adapters.ChatAdapter;
 import com.example.easyexchangeapp.Adapters.ItemAdapter;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.ChatModel;
+import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +41,8 @@ public class ChatActivity extends AppCompatActivity {
     private EditText messageBody;
     private ImageButton sendButton;
     private ChatAdapter chatAdapter;
+    private Class<? extends DatabaseReference> receiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +52,14 @@ public class ChatActivity extends AppCompatActivity {
         messageBody=findViewById(R.id.chatMessageText);
         sendButton=findViewById(R.id.chatSendButton);
 
-
-
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
+
 
         Intent intent=getIntent();
         clientName=intent.getStringExtra("client");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(clientName);
+        
         userName=manager.getValue(Constants.USER_NAME);
         chatRoomId=intent.getStringExtra("chat-room");
         userId=manager.getValue(Constants.USER_ID);

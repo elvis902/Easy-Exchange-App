@@ -53,7 +53,9 @@ public class ProductDetails extends AppCompatActivity {
         Product item = (Product) getIntent().getSerializableExtra("item_bundle");
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
         userId=manager.getValue(Constants.USER_ID);
-        clientId=item.getSellerID();
+        if (item != null) {
+            clientId=item.getSellerID();
+        }
         if(clientId.equals(userId)){
             chatBuyButton.setVisibility(View.INVISIBLE);
         }
