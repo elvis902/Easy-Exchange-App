@@ -9,17 +9,17 @@
     <item
         android:id="@+id/nav_favourites"
         android:enabled="true"
-        android:icon="@drawable/cart"
+        android:icon="@drawable/cart_selector"
         android:title="Favourites" />
     <item
         android:id="@+id/nav_orders"
         android:enabled="true"
-        android:icon="@drawable/chats"
+        android:icon="@drawable/chats_selector"
         android:title="Your Chats" />
     <item
         android:id="@+id/nav_profile"
         android:enabled="true"
-        android:icon="@drawable/user"
+        android:icon="@drawable/user_selector"
         android:title="Profile" />
 
 </menu>

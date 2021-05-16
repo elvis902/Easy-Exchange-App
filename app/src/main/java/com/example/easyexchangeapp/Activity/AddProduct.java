@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -47,6 +48,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText productPrice;
     private EditText productAddress;
     private ImageView selectedImage;
+    private ImageView backBtn;
     private FloatingActionButton selectImage;
     private Button saveProductButton;
 
@@ -61,6 +63,7 @@ public class AddProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_add_product);
 
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
@@ -80,6 +83,7 @@ public class AddProduct extends AppCompatActivity {
         storageReference= FirebaseStorage.getInstance().getReference(Constants.STORAGE_LOCATION);
         databaseReference= FirebaseDatabase.getInstance().getReference(Constants.STORAGE_LOCATION);
         firebaseAuth=FirebaseAuth.getInstance();
+
 
         //progressBar.setVisibility(View.INVISIBLE);
         selectImage.setOnClickListener(new View.OnClickListener() {

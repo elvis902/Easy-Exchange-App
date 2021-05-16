@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -61,6 +62,12 @@ public class ProductDetails extends AppCompatActivity {
         assert item != null;
 
 
+        if (getSupportActionBar() != null){
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
 
         displayInfo(item);
 
@@ -71,6 +78,17 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()== android.R.id.home) {
+
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void checkRoomAvailability(){
         DatabaseReference chatReference=databaseReference.child(userId).child("chatRooms");
         chatReference.addListenerForSingleValueEvent(new ValueEventListener() {

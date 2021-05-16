@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null){
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         bottomNavigation = findViewById(R.id.main_navigationBar);
         floatingActionButton = findViewById(R.id.fab);
@@ -41,15 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         floatingActionButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddProduct.class)));
 
         loadFragment(new HomeFragment());
-        //price = getResources().getStringArray(R.array.price);
-        //description = getResources().getStringArray(R.array.description);
-        //address = getResources().getStringArray(R.array.address);
 
-        //ItemAdapter itemAdapter = new ItemAdapter(this, price, description, address, images);
-
-//        recyclerView = findViewById(R.id.home_item_recycle_view);
-//        recyclerView.setAdapter(itemAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -124,6 +122,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
                 manager.clearAll();
                 signOutUser ();
+            }
+            if(item.getItemId()== android.R.id.home) {
+
+                finish();
             }
 
             default:
