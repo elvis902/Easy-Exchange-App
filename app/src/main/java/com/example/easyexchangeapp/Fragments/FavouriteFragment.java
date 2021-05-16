@@ -132,7 +132,7 @@ public class FavouriteFragment extends Fragment implements FavItemAdapter.OnFavI
     public void onFavClicked(int position) {
         Intent intent = new Intent(getContext(),ProductDetails.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("fav_prod_bundle",favItemsList.get(position));
+        bundle.putSerializable("item_bundle",favItemsList.get(position));
         intent.putExtras(bundle);
         startActivity(intent);
     }
