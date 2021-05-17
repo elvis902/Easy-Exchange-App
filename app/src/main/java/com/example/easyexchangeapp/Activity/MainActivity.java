@@ -15,6 +15,7 @@ import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
+import com.example.easyexchangeapp.NotificationManagerFiles.NotificationServiceClass;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigation.setOnNavigationItemSelectedListener(this);
 
         floatingActionButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddProduct.class)));
-
+        Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
+        startService(notificationServiceIntent);
         loadFragment(new HomeFragment());
         //price = getResources().getStringArray(R.array.price);
         //description = getResources().getStringArray(R.array.description);

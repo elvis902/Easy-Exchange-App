@@ -1,6 +1,7 @@
 package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.ChatModel;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,14 +83,20 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+
+
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms").child(chatRoomId);
+        databaseReference.child("search").setValue(chatRoomId);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<ChatModel> chatList=new ArrayList<>();
                 for(DataSnapshot temp: snapshot.getChildren()){
-                    chatList.add(temp.getValue(ChatModel.class));
-                    System.out.println("message: "+temp.getValue(ChatModel.class).getMessage());
+                    if(temp.getKey().equals("search")){
+                        continue;
+                    }else{
+                        chatList.add(temp.getValue(ChatModel.class));
+                    }
                 }
                 chatAdapter.setChatModelList(chatList);
                 chatAdapter.notifyDataSetChanged();
