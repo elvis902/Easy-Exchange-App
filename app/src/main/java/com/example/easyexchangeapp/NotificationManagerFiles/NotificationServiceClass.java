@@ -56,6 +56,7 @@ public class NotificationServiceClass extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        counter=0;
         Query query=databaseReference.orderByChild("search").startAt("/"+userId+"/");
         query.addValueEventListener(new ValueEventListener() {
             @Override
