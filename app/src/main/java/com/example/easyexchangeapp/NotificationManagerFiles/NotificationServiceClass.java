@@ -63,8 +63,8 @@ public class NotificationServiceClass extends Service {
                     if(dataSnapshot.hasChild("sender")){
                         String val=dataSnapshot.child("sender").getValue(String.class);
                         System.out.println("DEBUG: "+val);
-                        if(val!=""){
-                            if(val!=userId){
+                        if(!val.equals("")){
+                            if(!val.equals(userId)){
                                 Intent intent1=new Intent(getApplicationContext(),NotificationReceiver.class);
                                 intent1.putExtra("username",val);
                                 sendBroadcast(intent1);
