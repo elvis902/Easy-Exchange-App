@@ -155,7 +155,7 @@ public class ProfileFragment extends Fragment {
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                reference.child("profile_image").setValue(imageFilePath.toString());
+                                reference.child("profile_image").setValue(uri.toString());
                             }
                         });
                     }
