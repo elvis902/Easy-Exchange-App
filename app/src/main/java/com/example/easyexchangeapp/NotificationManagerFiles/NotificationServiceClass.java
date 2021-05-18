@@ -27,15 +27,12 @@ import static com.example.easyexchangeapp.NotificationManagerFiles.AppClass.Chan
 public class NotificationServiceClass extends Service {
 
     private DatabaseReference databaseReference;
-    private NotificationManagerCompat notificationManagerCompat;
     private String userId;
-    private int counter=0;
     @Override
     public void onCreate() {
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
         userId=manager.getValue(Constants.USER_ID);
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms");
-        notificationManagerCompat=NotificationManagerCompat.from(getApplicationContext());
         Intent notificationIntent=new Intent(this, SplashScreen.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,notificationIntent,0);
         Notification notification=new NotificationCompat.Builder(
@@ -56,19 +53,25 @@ public class NotificationServiceClass extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        counter=0;
+
         Query query=databaseReference.orderByChild("search").startAt("/"+userId+"/");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                counter++;
-                if(counter>1){
-                    Notification notification=new NotificationCompat.Builder(getApplicationContext(),
-                            Channel_ID)
-                            .setSmallIcon(R.drawable.logo_transparent)
-                            .setContentTitle("You have a new message!")
-                            .build();
-                    notificationManagerCompat.notify(2,notification);
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    System.out.println("ROOMS: "+dataSnapshot.getKey());
+                    if(dataSnapshot.hasChild("sender")){
+                        String val=dataSnapshot.child("sender").getValue(String.class);
+                        System.out.println("DEBUG: "+val);
+                        if(val!=""){
+                            if(val!=userId){
+                                Intent intent1=new Intent(getApplicationContext(),NotificationReceiver.class);
+                                intent1.putExtra("username",val);
+                                sendBroadcast(intent1);
+                                databaseReference.child(dataSnapshot.getKey()).child("sender").setValue("");
+                            }
+                        }
+                    }
                 }
             }
 

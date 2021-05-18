@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-  BottomNavigationView bottomNavigation;
+    BottomNavigationView bottomNavigation;
 //  Button logOut;
     FloatingActionButton floatingActionButton;
     private FirebaseAuth mAuth;

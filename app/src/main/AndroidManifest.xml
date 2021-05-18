@@ -32,6 +32,7 @@
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <service android:name=".NotificationManagerFiles.NotificationServiceClass"/>
+        <receiver android:name=".NotificationManagerFiles.NotificationReceiver"/>
     </application>
 
 </manifest>

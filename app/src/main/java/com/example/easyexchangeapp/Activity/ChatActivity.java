@@ -22,6 +22,7 @@ import com.example.easyexchangeapp.Adapters.ChatAdapter;
 import com.example.easyexchangeapp.Adapters.ItemAdapter;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.ChatModel;
+import com.example.easyexchangeapp.NotificationManagerFiles.NotificationServiceClass;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.firebase.database.ChildEventListener;
@@ -92,7 +93,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<ChatModel> chatList=new ArrayList<>();
                 for(DataSnapshot temp: snapshot.getChildren()){
-                    if(temp.getKey().equals("search")){
+                    if(temp.getKey().equals("search")||temp.getKey().equals("sender")){
                         continue;
                     }else{
                         chatList.add(temp.getValue(ChatModel.class));
@@ -113,6 +114,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message=messageBody.getText().toString();
                 if(!message.equals("")){
+                    databaseReference.child("sender").setValue(userId);
                     databaseReference.push().setValue(new ChatModel(userName,message,userId));
                     messageBody.setText("");
                 }
@@ -121,6 +123,12 @@ public class ChatActivity extends AppCompatActivity {
         
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
+        notificationServiceIntent.putExtra("temp",chatRoomId);
+        startService(notificationServiceIntent);
+    }
 
 }
