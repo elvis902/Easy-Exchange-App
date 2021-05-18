@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
 
-public class FavouriteFragment extends Fragment {
+public class FavouriteFragment extends Fragment implements FavItemAdapter.OnFavItemClickListener {
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -67,7 +67,7 @@ public class FavouriteFragment extends Fragment {
         //Getting the fav items
 
         //Putting into the RV
-        favItemAdapter = new FavItemAdapter(favItemsList,getContext());
+        favItemAdapter = new FavItemAdapter(favItemsList,getContext(),this);
         favItemAdapter.notifyDataSetChanged();
         favItemsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         favItemsRV.hasFixedSize();
@@ -126,5 +126,14 @@ public class FavouriteFragment extends Fragment {
         };
         databaseReference.addValueEventListener(eventListener);
 
+    }
+
+    @Override
+    public void onFavClicked(int position) {
+        Intent intent = new Intent(getContext(),ProductDetails.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("item_bundle",favItemsList.get(position));
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

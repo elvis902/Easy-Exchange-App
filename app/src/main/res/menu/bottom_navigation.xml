@@ -12,7 +12,7 @@
         android:icon="@drawable/cart"
         android:title="Favourites" />
     <item
-        android:id="@+id/nav_orders"
+        android:id="@+id/nav_chats"
         android:enabled="true"
         android:icon="@drawable/chats"
         android:title="Your Chats" />

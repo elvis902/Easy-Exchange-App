@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +30,19 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
 
     private List<Product> favItems;
     private Context mContext;
+    private OnFavItemClickListener clickListener;
 
-    public FavItemAdapter(List<Product> favItems, Context mContext) {
+    public FavItemAdapter(List<Product> favItems, Context mContext, OnFavItemClickListener clickListener) {
         this.favItems = favItems;
         this.mContext = mContext;
+        this.clickListener = clickListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fav_fragment_item_layout,parent,false);
-        ViewHolder  holder = new ViewHolder(view);
+        ViewHolder  holder = new ViewHolder(view,clickListener);
         return holder;
     }
 
@@ -95,13 +98,14 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
     }
 
 
-   static  public class ViewHolder extends RecyclerView.ViewHolder{
+   static  public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView itemPrice
                 , itemDescription
                 , itemAddress;
         ImageView itemImage, nextButton, delete;
+        OnFavItemClickListener mListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnFavItemClickListener mListener) {
             super(itemView);
             itemPrice = itemView.findViewById(R.id.favFrag_itemPrice);
             itemDescription = itemView.findViewById(R.id.favFrag_itemDescription);
@@ -109,8 +113,18 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
             itemImage = itemView.findViewById(R.id.favFrag_itemImage);
             nextButton = itemView.findViewById(R.id.favFrag_nextButton);
             delete = itemView.findViewById(R.id.favFrag_deleteBookmark);
+            this.mListener = mListener;
+            nextButton.setOnClickListener(this);
         }
 
+       @Override
+       public void onClick(View v) {
+           mListener.onFavClicked(getAdapterPosition());
+       }
+   }
+
+   public interface OnFavItemClickListener{
+        void onFavClicked(int position);
    }
 
 }
