@@ -25,8 +25,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class MainActivity extends AppCompatActivity{
-  BottomNavigationView bottomNavigation;
+public class MainActivity extends AppCompatActivity {
+    BottomNavigationView bottomNavigation;
 //  Button logOut;
     FloatingActionButton floatingActionButton;
     private FirebaseAuth mAuth;
@@ -45,6 +45,19 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupWithNavController(bottomNavigation,navController);
 
         floatingActionButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddProduct.class)));
+
+        Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
+        startService(notificationServiceIntent);
+        //price = getResources().getStringArray(R.array.price);
+        //description = getResources().getStringArray(R.array.description);
+        //address = getResources().getStringArray(R.array.address);
+
+        //ItemAdapter itemAdapter = new ItemAdapter(this, price, description, address, images);
+
+//        recyclerView = findViewById(R.id.home_item_recycle_view);
+//        recyclerView.setAdapter(itemAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
 
     }
