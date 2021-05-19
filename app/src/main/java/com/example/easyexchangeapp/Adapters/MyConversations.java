@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -64,11 +63,6 @@ public class MyConversations extends RecyclerView.Adapter<MyConversations.MyView
                 for(DataSnapshot tempSnap: snapshot.getChildren()){
                     if(tempSnap.getKey().equals("userName")){
                         holder.profName.setText(tempSnap.getValue(String.class));
-                    }else if(tempSnap.getKey().equals("profile_image")){
-                        Picasso.get().load(tempSnap.getValue(String.class))
-                                .fit()
-                                .centerInside()
-                                .into(holder.profileImg);
                     }
                 }
             }

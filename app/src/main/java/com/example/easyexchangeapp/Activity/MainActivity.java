@@ -18,7 +18,6 @@ import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
-import com.example.easyexchangeapp.NotificationManagerFiles.NotificationServiceClass;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,8 +25,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    BottomNavigationView bottomNavigation;
+public class MainActivity extends AppCompatActivity{
+  BottomNavigationView bottomNavigation;
 //  Button logOut;
     FloatingActionButton floatingActionButton;
     private FirebaseAuth mAuth;
@@ -46,19 +45,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         NavigationUI.setupWithNavController(bottomNavigation,navController);
 
         floatingActionButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AddProduct.class)));
-
-        Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
-        startService(notificationServiceIntent);
-        loadFragment(new HomeFragment());
-        //price = getResources().getStringArray(R.array.price);
-        //description = getResources().getStringArray(R.array.description);
-        //address = getResources().getStringArray(R.array.address);
-
-        //ItemAdapter itemAdapter = new ItemAdapter(this, price, description, address, images);
-
-//        recyclerView = findViewById(R.id.home_item_recycle_view);
-//        recyclerView.setAdapter(itemAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
     }
