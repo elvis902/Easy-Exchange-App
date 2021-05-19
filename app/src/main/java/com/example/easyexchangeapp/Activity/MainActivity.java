@@ -26,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
 //  Button logOut;
     FloatingActionButton floatingActionButton;
@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
         startService(notificationServiceIntent);
-        loadFragment(new HomeFragment());
         //price = getResources().getStringArray(R.array.price);
         //description = getResources().getStringArray(R.array.description);
         //address = getResources().getStringArray(R.array.address);
