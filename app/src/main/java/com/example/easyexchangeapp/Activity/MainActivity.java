@@ -18,7 +18,6 @@ import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
-import com.example.easyexchangeapp.NotificationManagerFiles.NotificationServiceClass;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView = findViewById(R.id.home_item_recycle_view);
 //        recyclerView.setAdapter(itemAdapter);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
 
     }

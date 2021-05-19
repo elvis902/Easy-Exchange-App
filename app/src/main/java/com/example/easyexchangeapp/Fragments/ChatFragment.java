@@ -37,7 +37,7 @@ public class ChatFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private RecyclerView chatRecordRV;
-    private DatabaseReference databaseReference,userReference;
+    private DatabaseReference databaseReference;
     private String currentUid;
     private List<MyChatRecord> myChatRecordList=new ArrayList<>();
 
@@ -91,7 +91,6 @@ public class ChatFragment extends Fragment {
         chatRecordRV.setAdapter(conversationsAdapter);
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(currentUid).child("chatRooms");
-        userReference=FirebaseDatabase.getInstance().getReference().child("Users");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
