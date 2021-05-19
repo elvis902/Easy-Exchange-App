@@ -3,7 +3,7 @@
     package="com.example.easyexchangeapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +31,8 @@
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
+        <service android:name=".NotificationManagerFiles.NotificationServiceClass"/>
+        <receiver android:name=".NotificationManagerFiles.NotificationReceiver"/>
     </application>
 
 </manifest>
