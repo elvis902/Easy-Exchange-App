@@ -89,8 +89,8 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
-                    android:layout_width="268dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
@@ -103,10 +103,14 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="140dp"
+                        android:layout_marginTop="135dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/profile_phone_no"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/profile_phone_no"
@@ -116,8 +120,13 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
+                        android:layout_marginBottom="2dp"
                         android:textColor="#505050"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@+id/profile_email_id"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
                     <TextView
                         android:id="@+id/profile_email_id"
@@ -128,8 +137,13 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
                         android:textColor="#505050"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/profile_address"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_phone_no" />
 
                     <TextView
                         android:id="@+id/profile_address"
@@ -139,48 +153,66 @@
                         android:layout_below="@id/profile_email_id"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
                         android:textColor="#505050"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_email_id" />
 
                     <ImageView
                         android:id="@+id/call_icon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginTop="182dp"
-                        android:layout_marginEnd="63dp"
                         android:layout_toStartOf="@id/profile_phone_no"
                         android:contentDescription="TODO"
-                        android:tint="#090808"
-                        app:srcCompat="@android:drawable/ic_menu_call" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.75"
+                        app:srcCompat="@android:drawable/ic_menu_call"
+                        app:tint="#090808" />
 
                     <ImageView
                         android:id="@+id/mail_icon"
                         android:layout_width="20dp"
                         android:layout_height="18dp"
                         android:layout_below="@+id/call_icon"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="63dp"
                         android:layout_toStartOf="@+id/profile_phone_no"
                         android:contentDescription="TODO"
-                        android:tint="#505050"
-                        app:srcCompat="@android:drawable/ic_dialog_email" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.85"
+                        app:srcCompat="@android:drawable/ic_dialog_email"
+                        app:tint="#505050" />
 
                     <ImageView
                         android:id="@+id/address_icon"
                         android:layout_width="20dp"
                         android:layout_height="18dp"
                         android:layout_below="@+id/profile_email_id"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginEnd="48dp"
                         android:layout_toStartOf="@+id/profile_address"
                         android:contentDescription="TODO"
-                        android:tint="#505050"
-                        app:srcCompat="@drawable/placeholder" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.95"
+                        app:srcCompat="@drawable/placeholder"
+                        app:tint="#505050" />
 
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>
