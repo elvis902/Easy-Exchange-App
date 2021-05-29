@@ -7,9 +7,9 @@
     <application
         android:name=".NotificationManagerFiles.AppClass"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/easy_exchange"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/easy_exchange"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyExchangeApp">
         <activity android:name=".Activity.SplashScreen"

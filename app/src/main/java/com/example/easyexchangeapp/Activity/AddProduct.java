@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -57,6 +58,7 @@ public class AddProduct extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private StorageTask storageTask;
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,9 @@ public class AddProduct extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference(Constants.STORAGE_LOCATION);
         firebaseAuth=FirebaseAuth.getInstance();
 
+        pd = new ProgressDialog(this);
+        pd.setMessage("Uploading...");
+
         //progressBar.setVisibility(View.INVISIBLE);
         selectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +100,7 @@ public class AddProduct extends AppCompatActivity {
                 if(storageTask!=null&&storageTask.isInProgress()){
                     Toast.makeText(AddProduct.this,"Please wait upload in progress",Toast.LENGTH_SHORT).show();
                 }else{
+                    pd.show();
                     saveImage();
                 }
             }
@@ -117,12 +123,14 @@ public class AddProduct extends AppCompatActivity {
     public void saveImage(){
         String prodName=productName.getText().toString();
         String prodDescription=productDescription.getText().toString();
-        String prodPrice=productPrice.getText().toString();
+        String prodPrice= productPrice.getText().toString();
+
         if(filePath!=null&&
             !prodName.equals("")&&
             !prodPrice.equals("")&&
             !prodDescription.equals("")){
             //progressBar.setVisibility(View.VISIBLE);
+            String finalProdPrice = "Rs " + prodPrice;
             final String uploadId=databaseReference.push().getKey();
             final StorageReference fileReference=storageReference.child(uploadId+"."+getFileExtension(filePath));
             storageTask=fileReference.putFile(filePath)
@@ -131,6 +139,7 @@ public class AddProduct extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             //progressBar.setVisibility(View.VISIBLE);
                             //progressBar.setProgress(0);
+                            pd.dismiss();
                             Toast.makeText(AddProduct.this,"Upload successful!",Toast.LENGTH_SHORT).show();
                             fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
@@ -142,7 +151,7 @@ public class AddProduct extends AppCompatActivity {
                                     String soldStatus="false";
                                     String prodAddress = productAddress.getText().toString();
                                     String itemKey=uploadId;
-                                    Product product=new Product(prodName,prodDescription,prodPrice,imageUrl,sellerName,soldStatus,itemKey,sellerEmail,prodAddress,currentUserId);
+                                    Product product=new Product(prodName,prodDescription,finalProdPrice,imageUrl,sellerName,soldStatus,itemKey,sellerEmail,prodAddress,currentUserId);
                                     databaseReference.child(uploadId).setValue(product);
                                     finish();
                                 }
@@ -151,6 +160,7 @@ public class AddProduct extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
                             Toast.makeText(AddProduct.this,"Upload Failed!",Toast.LENGTH_SHORT).show();
                             //progressBar.setVisibility(View.INVISIBLE);
                         }
@@ -165,11 +175,22 @@ public class AddProduct extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                            //progressBar.setVisibility(View.INVISIBLE);
+                            pd.dismiss();
                         }
                     });
-        }else{
+        }else if(prodName.equals("")){
+            Toast.makeText(AddProduct.this,"Please add product name!",Toast.LENGTH_SHORT).show();
+        }
+        else if(prodPrice.equals("")){
+            Toast.makeText(AddProduct.this,"Please add product price!",Toast.LENGTH_SHORT).show();
+        }
+        else if(prodDescription.equals("")){
+            Toast.makeText(AddProduct.this,"Please add product description!",Toast.LENGTH_SHORT).show();
+        }
+        else{
             Toast.makeText(AddProduct.this,"File not selected!",Toast.LENGTH_SHORT).show();
         }
+
     }
 
 
