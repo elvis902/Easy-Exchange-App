@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.easyexchangeapp">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -31,6 +33,8 @@
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
+        <service android:name=".NotificationManagerFiles.NotificationServiceClass"/>
+        <receiver android:name=".NotificationManagerFiles.NotificationReceiver"/>
     </application>
 
 </manifest>
