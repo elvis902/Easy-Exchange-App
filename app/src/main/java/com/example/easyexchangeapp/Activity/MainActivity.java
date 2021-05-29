@@ -1,6 +1,9 @@
 package com.example.easyexchangeapp.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import com.example.easyexchangeapp.Fragments.ChatFragment;
 import com.example.easyexchangeapp.Fragments.FavouriteFragment;
 import com.example.easyexchangeapp.Fragments.HomeFragment;
 import com.example.easyexchangeapp.Fragments.ProfileFragment;
+import com.example.easyexchangeapp.NotificationManagerFiles.NotificationReceiver;
 import com.example.easyexchangeapp.NotificationManagerFiles.NotificationServiceClass;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity{
 
         Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
         startService(notificationServiceIntent);
+
+
         //price = getResources().getStringArray(R.array.price);
         //description = getResources().getStringArray(R.array.description);
         //address = getResources().getStringArray(R.array.address);
