@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.easyexchangeapp.Constants.Constants;
+import com.example.easyexchangeapp.DialogFile.AppDialog;
 import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
@@ -70,14 +74,20 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                firebaseUser = mAuth.getCurrentUser();
-                if(firebaseUser !=null){
-                    searchUser(firebaseUser.getUid());
+                if(isConnected()){
+                    firebaseUser = mAuth.getCurrentUser();
+                    if(firebaseUser !=null){
+                        searchUser(firebaseUser.getUid());
+                    }else{
+                        Intent intent= new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
-                    Intent intent= new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    AppDialog dialog=new AppDialog();
+                    dialog.show(getSupportFragmentManager(),"error dialog");
                 }
+
             }
         }, 2000);
 
@@ -111,4 +121,16 @@ public class SplashScreen extends AppCompatActivity {
         });
     }
 
+    private boolean isConnected(){
+        try {
+            ConnectivityManager manager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo=null;
+            if(networkInfo==null){
+                networkInfo=manager.getActiveNetworkInfo();
+            }
+            return networkInfo!=null&&networkInfo.isConnected();
+        }catch (NullPointerException e){
+            return false;
+        }
+    }
 }

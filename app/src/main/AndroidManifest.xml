@@ -2,8 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.easyexchangeapp">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:name=".NotificationManagerFiles.AppClass"
         android:allowBackup="true"
@@ -32,7 +40,10 @@
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <service android:name=".NotificationManagerFiles.NotificationServiceClass"/>
+
+        <service android:name=".NotificationManagerFiles.NotificationServiceClass"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
         <receiver android:name=".NotificationManagerFiles.NotificationReceiver"/>
     </application>
 
