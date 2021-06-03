@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private RecyclerView chatRV;
     private EditText messageBody;
-    private ImageButton sendButton;
+    private ImageView sendButton;
     private ChatAdapter chatAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

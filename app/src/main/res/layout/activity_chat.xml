@@ -64,8 +64,8 @@
                 android:layout_marginRight="6dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="Type a message..."
                 android:inputType="textPersonName"
-                android:text="Type a message..."
                 android:textColor="#939191" />
 
         </LinearLayout>
