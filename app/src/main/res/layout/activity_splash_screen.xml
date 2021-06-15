@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Easy Exchange App"
         android:textAlignment="center"
         android:textSize="20sp"

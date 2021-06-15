@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="145dp"
-    android:layout_margin="20dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="9dp"
+    android:layout_marginEnd="18dp"
+    android:layout_marginBottom="9dp"
+    android:background="@drawable/mydrop_shadow"
     android:elevation="13dp"
-    android:orientation="horizontal"
-    android:background="@drawable/mydrop_shadow">
+    android:orientation="horizontal">
 
 
     <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/mydrop_shadow"
         android:layout_gravity="center"
+        android:background="@drawable/mydrop_shadow"
         card_view:cardCornerRadius="13dp">
 
         <ImageView
             android:id="@+id/itemImage"
             android:layout_width="114dp"
             android:layout_height="112dp"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="14dp"
-            android:padding="5dp"
-            android:backgroundTint="@color/white"
+            android:layout_marginTop="16dp"
             android:background="@drawable/mydrop_shadow"
+            android:backgroundTint="@color/white"
             android:contentDescription="@string/todo"
             android:elevation="13dp"
+            android:padding="5dp"
             android:src="@mipmap/ic_launcher_round" />
 
         <LinearLayout
@@ -45,24 +47,26 @@
 
                 <TextView
                     android:id="@+id/itemPrice"
-                    android:textColor="@color/black"
                     android:layout_width="170dp"
-                    android:fontFamily="@font/roboto_medium"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="138dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:maxEms="100"
+                    android:maxLines="1"
                     android:text="Price"
-                    android:textSize="23sp" />
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
 
 
                 <ImageView
+                    android:id="@+id/nextButton"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginTop="13dp"
                     android:layout_marginStart="1dp"
-                    android:id="@+id/nextButton"
+                    android:layout_marginTop="17dp"
                     android:clickable="true"
-                    android:src="@drawable/arrow"/>
+                    android:src="@drawable/arrow" />
 
             </LinearLayout>
 
@@ -71,15 +75,15 @@
                 android:id="@+id/itemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
                 android:layout_marginStart="138dp"
                 android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_medium"
                 android:maxEms="200"
                 android:maxLines="1"
-                android:ellipsize="end"
                 android:text="Description"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,14 +104,14 @@
                     android:id="@+id/itemAddress"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="3dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_light"
                     android:maxEms="200"
                     android:maxLines="1"
-                    android:ellipsize="end"
                     android:text="Address"
-                    android:fontFamily="@font/roboto_light"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <ImageView

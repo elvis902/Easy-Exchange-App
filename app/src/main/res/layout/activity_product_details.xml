@@ -11,6 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semibold"
         android:text="Product Details"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -72,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:padding="3dp"
                     android:text="Product name"
                     android:textColor="#979797"
@@ -84,10 +86,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="2dp"
                     android:text="Backpack"
                     android:textColor="#000000"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -115,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:padding="3dp"
                     android:text="Description"
                     android:textColor="#979797"
@@ -128,10 +132,11 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="2dp"
                     android:text="Description to be added"
                     android:textColor="#000000"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -159,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:padding="3dp"
                     android:text="Price"
                     android:textColor="#979797"
@@ -171,10 +177,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="2dp"
                     android:text="$ 23.8"
                     android:textColor="#000000"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -203,6 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:padding="3dp"
                     android:text="Address"
                     android:textColor="#979797"
@@ -216,10 +224,11 @@
                     android:layout_marginLeft="18dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="2dp"
                     android:text="PG Hostel,Nit Silchar"
                     android:textColor="#000000"
-                    android:textSize="19dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -233,6 +242,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Chat/Buy"
         android:textAllCaps="false"
         android:textSize="18sp"
