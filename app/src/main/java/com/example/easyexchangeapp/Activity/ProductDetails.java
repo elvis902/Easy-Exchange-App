@@ -93,7 +93,7 @@ public class ProductDetails extends AppCompatActivity {
                 }
                 Intent intent=new Intent(getApplicationContext(),ChatActivity.class);
                 intent.putExtra("chat-room",chatRoomId);
-                intent.putExtra("client",sellerName);
+                intent.putExtra("client",clientId);
                 startActivity(intent);
             }
 

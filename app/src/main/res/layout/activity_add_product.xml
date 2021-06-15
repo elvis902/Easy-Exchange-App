@@ -229,6 +229,7 @@
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/montserrat_medium"
                         android:hint="Item Price"
+                        android:inputType="numberDecimal"
                         android:textColor="@color/black"
                         android:textColorHint="@color/offBlack"
                         android:textSize="18sp" />

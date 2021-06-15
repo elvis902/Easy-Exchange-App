@@ -70,6 +70,7 @@
                 android:textColor="#939191"
                 android:textSize="16dp" />
 
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
