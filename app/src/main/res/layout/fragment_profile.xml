@@ -32,7 +32,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="40dp"
                 app:cardElevation="6dp">
 
@@ -68,6 +68,8 @@
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         app:cardCornerRadius="60dp"
+                        app:cardElevation="0dp"
+                        app:cardMaxElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.18"
@@ -104,6 +106,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="135dp"
+                        android:fontFamily="@font/montserrat_medium"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -121,6 +124,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/montserrat_medium"
                         android:textColor="#505050"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toTopOf="@+id/profile_email_id"
@@ -132,16 +136,22 @@
                         android:id="@+id/profile_email_id"
                         style="@style/Widget.AppCompat.TextView"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="22dp"
                         android:layout_below="@id/profile_phone_no"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="50dp"
                         android:layout_marginTop="2dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:maxEms="200"
+                        android:maxLines="1"
                         android:textColor="#505050"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/profile_address"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.42"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profile_phone_no" />
 
@@ -155,6 +165,9 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:maxEms="200"
+                        android:maxLines="1"
                         android:textColor="#505050"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -241,6 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="40dp"
@@ -257,13 +271,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
                             android:text="Edit Profile"
-                            android:textSize="20dp" />
+                            android:textSize="18dp" />
 
                         <ImageView
                             android:layout_width="29dp"
                             android:layout_height="26dp"
-                            android:layout_marginLeft="168dp"
+                            android:layout_marginLeft="164dp"
                             android:src="@drawable/next" />
 
                     </LinearLayout>
@@ -289,13 +304,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
                             android:text="My Orders"
-                            android:textSize="20dp" />
+                            android:textSize="18dp" />
 
                         <ImageView
                             android:layout_width="29dp"
                             android:layout_height="26dp"
-                            android:layout_marginLeft="170dp"
+                            android:layout_marginLeft="175dp"
                             android:src="@drawable/next" />
 
                     </LinearLayout>
@@ -306,7 +322,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="16dp"
                     app:cardCornerRadius="40dp"
                     app:cardElevation="6dp">
 
@@ -321,26 +337,28 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
                             android:text="My Ads"
-                            android:textSize="20dp" />
+                            android:textSize="18dp" />
 
                         <ImageView
                             android:id="@+id/profile_to_myAds"
                             android:layout_width="29dp"
                             android:layout_height="26dp"
-                            android:layout_marginLeft="195dp"
+                            android:layout_marginLeft="200dp"
                             android:src="@drawable/next" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </GridLayout>
+
             <ProgressBar
                 android:id="@+id/progress_picUpload"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

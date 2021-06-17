@@ -19,10 +19,11 @@
         android:id="@+id/myAds_userMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/montserrat_semibold"
+        android:padding="5dp"
         android:text="UserMail"
         android:textAlignment="center"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/blue_1"
         android:textSize="20sp" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myAds_RV"
