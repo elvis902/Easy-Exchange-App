@@ -276,6 +276,7 @@
                             android:textSize="18dp" />
 
                         <ImageView
+                            android:id="@+id/profile_to_edit"
                             android:layout_width="29dp"
                             android:layout_height="26dp"
                             android:layout_marginLeft="164dp"
