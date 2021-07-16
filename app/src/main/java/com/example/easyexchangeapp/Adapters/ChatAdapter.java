@@ -1,6 +1,7 @@
 package com.example.easyexchangeapp.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,22 +19,21 @@ import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
-    List<ChatModel> chatModelList=new ArrayList<>();
+    List<ChatModel> chatModelList;
     Context context;
     String currentUID;
 
-    public ChatAdapter(Context context){
+    public ChatAdapter(Context context,ArrayList<ChatModel> chatModelList){
         this.context=context;
+        this.chatModelList = chatModelList;
         SharedPrefManager manager=new SharedPrefManager(context);
         currentUID=manager.getValue(Constants.USER_ID);
     }
 
-    public void setChatModelList(List<ChatModel> chatModelList) {
-        this.chatModelList = chatModelList;
-    }
 
     @NonNull
     @Override
@@ -46,15 +46,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ChatAdapter.MyViewHolder holder, int position) {
         ChatModel currentChat=chatModelList.get(position);
-        System.out.println("RV: "+currentUID);
         if(currentUID.equals(currentChat.getSenderID())){
+            holder.clientName.setText("");
+            holder.clientMessage.setText("");
+            holder.client.setBackgroundColor(Color.WHITE);
+            holder.sender.setBackgroundResource(R.drawable.user_send_text_bg);
             holder.senderMessage.setText(currentChat.getMessage());
             holder.senderName.setText(currentChat.getSender());
-            holder.clientMessage.setText("");
-            holder.clientName.setText("");
         }else {
             holder.senderMessage.setText("");
             holder.senderName.setText("");
+            holder.sender.setBackgroundColor(Color.WHITE);
+            holder.client.setBackgroundResource(R.drawable.user_recieve_text_bg);
             holder.clientMessage.setText(currentChat.getMessage());
             holder.clientName.setText(currentChat.getSender());
         }
