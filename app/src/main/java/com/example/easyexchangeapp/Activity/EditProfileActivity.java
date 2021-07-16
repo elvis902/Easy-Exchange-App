@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
 public class EditProfileActivity extends AppCompatActivity {
-    //TODO: Update the mail and password using the auth credentials
+    //TODO: Add Changing Profile Image Utility
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
@@ -55,13 +61,16 @@ public class EditProfileActivity extends AppCompatActivity {
         update_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateUserInfo();
+                if(updateUserInfo()){
+                    Toast.makeText(getApplicationContext(),"Updated!",Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
         });
 
     }
 
-    private void updateUserInfo() {
+    private boolean updateUserInfo() {
         String name = edit_name.getText().toString();
         String mail = edit_email.getText().toString();
         String num = edit_num.getText().toString();
@@ -73,6 +82,33 @@ public class EditProfileActivity extends AppCompatActivity {
             databaseReference.child("userName").setValue(name);
             databaseReference.child("userEmail").setValue(mail);
             databaseReference.child("userPhoneNo").setValue(num);
+
+            if(mail.contains("@")) {
+                curr_user.updateEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                            Log.i("Update_Mail: ","Email Updated Successfully");
+                    }
+                });
+            }else{
+                Toast.makeText(this, "Please Enter valid email", Toast.LENGTH_SHORT).show();
+            }
+
+            if(pass.length()>=8){
+                curr_user.updatePassword(pass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if(task.isSuccessful())
+                            Log.i("Update_Password: ","Password Updated Successfully");
+                    }
+                });
+            }else{
+                Toast.makeText(this, "Please Enter valid password(length min.8)", Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        }else{
+            return false;
         }
     }
 
