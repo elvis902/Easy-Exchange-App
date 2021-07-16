@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.easyexchangeapp.Activity.EditProfileActivity;
 import com.example.easyexchangeapp.Activity.MyAds;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.RegisterUser;
@@ -52,7 +53,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private RegisterUser user;
-    private ImageView toMyAds;
+    private ImageView toMyAds,toEditProfile;
     private FloatingActionButton editPic;
     private StorageReference storageRef;
     private StorageTask storageTask;
@@ -78,6 +79,7 @@ public class ProfileFragment extends Fragment {
         userMail = view.findViewById(R.id.profile_email_id);
         userPhone = view.findViewById(R.id.profile_phone_no);
         toMyAds = view.findViewById(R.id.profile_to_myAds);
+        toEditProfile=view.findViewById(R.id.profile_to_edit);
         editPic = view.findViewById(R.id.edit_pic);
         profilePic = view.findViewById(R.id.user_profilePic);
         uploadProgress = view.findViewById(R.id.progress_picUpload);
@@ -90,6 +92,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 goToMyAds();
+            }
+        });
+
+        toEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToEdit();
             }
         });
 
@@ -197,6 +206,10 @@ public class ProfileFragment extends Fragment {
     public void goToMyAds(){
         Intent intent = new Intent(getContext(), MyAds.class);
         intent.putExtra("user_mail",userMail.getText());
+        startActivity(intent);
+    }
+    public void goToEdit(){
+        Intent intent=new Intent(getContext(), EditProfileActivity.class);
         startActivity(intent);
     }
 }
