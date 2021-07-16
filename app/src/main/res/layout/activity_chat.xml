@@ -65,8 +65,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:fontFamily="@font/montserrat_medium"
+                android:hint="Type a message..."
                 android:inputType="textPersonName"
-                android:text="Type a message..."
                 android:textColor="#939191"
                 android:textSize="16dp" />
 

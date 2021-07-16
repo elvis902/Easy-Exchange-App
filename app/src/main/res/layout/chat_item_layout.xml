@@ -21,17 +21,21 @@
             <TextView
                 android:id="@+id/chat_clientName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textAlignment="center"
-                android:textStyle="bold|italic" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#391143"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chat_clientMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="cursive"
                 android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textColor="#612C6E"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,15 +50,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textStyle="bold|italic" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#432222"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chat_senderMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="cursive"
                 android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textColor="#532E2E"
+                android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

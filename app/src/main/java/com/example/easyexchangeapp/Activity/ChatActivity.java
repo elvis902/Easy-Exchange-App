@@ -44,6 +44,7 @@ public class ChatActivity extends AppCompatActivity {
     private EditText messageBody;
     private ImageView sendButton;
     private ChatAdapter chatAdapter;
+    private ArrayList<ChatModel> chatList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class ChatActivity extends AppCompatActivity {
         userName=manager.getValue(Constants.USER_NAME);
         chatRoomId=intent.getStringExtra("chat-room");
         userId=manager.getValue(Constants.USER_ID);
-        chatAdapter = new ChatAdapter(getApplicationContext());
+        chatAdapter = new ChatAdapter(getApplicationContext(),chatList);
         chatRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
@@ -92,7 +93,7 @@ public class ChatActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<ChatModel> chatList=new ArrayList<>();
+                chatList.clear();
                 for(DataSnapshot temp: snapshot.getChildren()){
                     if(temp.getKey().equals("search")||temp.getKey().equals("sender")){
                         continue;
@@ -100,7 +101,6 @@ public class ChatActivity extends AppCompatActivity {
                         chatList.add(temp.getValue(ChatModel.class));
                     }
                 }
-                chatAdapter.setChatModelList(chatList);
                 chatAdapter.notifyDataSetChanged();
             }
 
