@@ -36,17 +36,17 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:cardCornerRadius="35dp"
+            android:padding="10dp"
             app:cardElevation="6dp">
 
             <ImageView
                 android:id="@+id/detail_itemImage"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:padding="20dp"
                 app:srcCompat="@drawable/bag" />
         </com.google.android.material.card.MaterialCardView>
 

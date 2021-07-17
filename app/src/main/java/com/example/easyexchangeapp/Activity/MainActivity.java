@@ -54,18 +54,6 @@ public class MainActivity extends AppCompatActivity{
         Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
         startService(notificationServiceIntent);
 
-
-        //price = getResources().getStringArray(R.array.price);
-        //description = getResources().getStringArray(R.array.description);
-        //address = getResources().getStringArray(R.array.address);
-
-        //ItemAdapter itemAdapter = new ItemAdapter(this, price, description, address, images);
-
-//        recyclerView = findViewById(R.id.home_item_recycle_view);
-//        recyclerView.setAdapter(itemAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
 

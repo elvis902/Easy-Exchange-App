@@ -40,6 +40,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class AddProduct extends AppCompatActivity {
 
@@ -48,6 +49,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText productPrice;
     private EditText productAddress;
     private ImageView selectedImage;
+    private ImageView backButton;
     private FloatingActionButton selectImage;
     private Button saveProductButton;
 
@@ -64,6 +66,7 @@ public class AddProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
         currentUserId=manager.getValue(Constants.USER_ID);
@@ -77,6 +80,7 @@ public class AddProduct extends AppCompatActivity {
         productAddress = findViewById(R.id.productAddress);
         selectImage=findViewById(R.id.edit_pic);
         saveProductButton=findViewById(R.id.addButton);
+        backButton = findViewById(R.id.backButton);
 
         firebaseAuth = FirebaseAuth.getInstance();
         storageReference= FirebaseStorage.getInstance().getReference(Constants.STORAGE_LOCATION);
@@ -103,6 +107,13 @@ public class AddProduct extends AppCompatActivity {
                     pd.show();
                     saveImage();
                 }
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

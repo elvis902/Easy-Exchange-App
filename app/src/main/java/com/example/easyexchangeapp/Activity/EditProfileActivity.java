@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private Button update_info;
     private Button update_pass;
+    private ImageButton backButton;
 
     private RegisterUser user_class;
 
@@ -55,6 +57,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        Objects.requireNonNull(getSupportActionBar()).hide();
         auth = FirebaseAuth.getInstance();
         curr_user = auth.getCurrentUser();
         userId = curr_user.getUid();
@@ -67,6 +70,7 @@ public class EditProfileActivity extends AppCompatActivity {
         update_info = findViewById(R.id.button2);
         profilePic = findViewById(R.id.user_profilePic);
         update_pass = findViewById(R.id.update_password);
+        backButton = findViewById(R.id.imageButton);
 
         fetchUserDetails();
         update_info.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +87,13 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updatePassword();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

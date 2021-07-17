@@ -29,7 +29,8 @@
         <activity android:name=".Activity.ChatActivity" />
         <activity android:name=".Activity.MyAds" />
         <activity android:name=".Activity.ProductDetails" />
-        <activity android:name=".Activity.AddProduct" />
+        <activity android:name=".Activity.AddProduct"
+            android:theme="@style/Theme.EasyExchangeApp"/>
         <activity
             android:name=".Activity.LoginActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
