@@ -257,30 +257,31 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="6dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="37dp"
-                        android:layout_row="0"
-                        android:layout_column="0"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="18dp">
+                        android:layout_height="match_parent"
+                        android:weightSum="4"
+                        android:padding="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Edit Profile"
+                            android:layout_weight="1"
                             android:textSize="18dp" />
 
                         <ImageView
                             android:id="@+id/profile_to_edit"
-                            android:layout_width="29dp"
-                            android:layout_height="26dp"
-                            android:layout_marginLeft="164dp"
-                            android:src="@drawable/next" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitEnd"
+                            android:layout_weight="3"
+                            android:src="@drawable/next_icon" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -291,29 +292,31 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="6dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="37dp"
-                        android:layout_row="1"
-                        android:layout_column="0"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="18dp">
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:padding="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="My Orders"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
                             android:textSize="18dp" />
 
                         <ImageView
-                            android:layout_width="29dp"
-                            android:layout_height="26dp"
-                            android:layout_marginLeft="175dp"
-                            android:src="@drawable/next" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitEnd"
+                            android:layout_weight="3"
+                            android:src="@drawable/next_icon" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -324,30 +327,32 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="6dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="37dp"
-                        android:layout_row="1"
-                        android:layout_column="0"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="18dp">
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:padding="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:fontFamily="@font/montserrat_medium"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
                             android:text="My Ads"
                             android:textSize="18dp" />
 
                         <ImageView
                             android:id="@+id/profile_to_myAds"
-                            android:layout_width="29dp"
-                            android:layout_height="26dp"
-                            android:layout_marginLeft="200dp"
-                            android:src="@drawable/next" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitEnd"
+                            android:layout_weight="3"
+                            android:src="@drawable/next_icon" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

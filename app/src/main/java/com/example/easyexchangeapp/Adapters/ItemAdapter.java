@@ -56,7 +56,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
         holder.itemPrice.setText(productsList.get(position).getProdPrice());
 
-        holder.itemDescription.setText(productsList.get(position).getProdDescription());
+        holder.itemName.setText(productsList.get(position).getProdName());
 
         holder.itemAddress.setText(productsList.get(position).getProdAddress());
 
@@ -81,7 +81,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     static public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView itemPrice
-                , itemDescription
+                , itemName
                 , itemAddress;
         ImageView itemImage, nextButton, bookmark;
         onItemClickedListener itemClicked;
@@ -89,7 +89,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView, onItemClickedListener itemClicked) {
             super(itemView);
             itemPrice = itemView.findViewById(R.id.itemPrice);
-            itemDescription = itemView.findViewById(R.id.itemDescription);
+            itemName = itemView.findViewById(R.id.itemDescription);
             itemAddress = itemView.findViewById(R.id.itemAddress);
             itemImage = itemView.findViewById(R.id.itemImage);
             nextButton = itemView.findViewById(R.id.nextButton);

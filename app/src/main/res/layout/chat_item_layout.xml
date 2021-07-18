@@ -16,13 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="5dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/chat_clientName"
                 android:layout_width="match_parent"
+                android:padding="5dp"
                 android:layout_height="27dp"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#391143"
                 android:textSize="12sp"
@@ -32,10 +34,11 @@
                 android:id="@+id/chat_clientMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-                android:textAlignment="center"
+                android:fontFamily="@font/montserrat_medium"
+                android:textAlignment="textStart"
+                android:padding="5dp"
                 android:textColor="#612C6E"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,13 +46,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="5dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/chat_senderName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:textAlignment="viewEnd"
+                android:padding="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#432222"
                 android:textSize="12sp"
@@ -59,10 +64,11 @@
                 android:id="@+id/chat_senderMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-                android:textAlignment="center"
+                android:padding="5dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textAlignment="textStart"
                 android:textColor="#532E2E"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

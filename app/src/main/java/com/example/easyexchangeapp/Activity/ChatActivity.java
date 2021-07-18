@@ -2,6 +2,7 @@ package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +51,9 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         chatRV=findViewById(R.id.chatRecyclerView);
         messageBody=findViewById(R.id.chatMessageText);
@@ -64,7 +69,8 @@ public class ChatActivity extends AppCompatActivity {
         chatRoomId=intent.getStringExtra("chat-room");
         userId=manager.getValue(Constants.USER_ID);
         chatAdapter = new ChatAdapter(getApplicationContext(),chatList);
-        chatRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        chatRV.setLayoutManager(llm);
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
 
@@ -101,6 +107,7 @@ public class ChatActivity extends AppCompatActivity {
                         chatList.add(temp.getValue(ChatModel.class));
                     }
                 }
+                chatRV.scrollToPosition(chatList.size()-1);
                 chatAdapter.notifyDataSetChanged();
             }
 
@@ -130,6 +137,16 @@ public class ChatActivity extends AppCompatActivity {
         Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
         notificationServiceIntent.putExtra("temp",chatRoomId);
         startService(notificationServiceIntent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

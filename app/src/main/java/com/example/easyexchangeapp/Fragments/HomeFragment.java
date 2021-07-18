@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -59,8 +60,8 @@ public class HomeFragment extends Fragment implements ItemAdapter.onItemClickedL
                 for(DataSnapshot prodSnap : snapshot.getChildren()){
                     Product tempModel = prodSnap.getValue(Product.class);
                     productList.add(tempModel);
-                    System.out.print("TEST: "+tempModel.getItemKey());
                 }
+                Collections.reverse(productList);
                 adapter.notifyDataSetChanged();
             }
 
@@ -73,7 +74,8 @@ public class HomeFragment extends Fragment implements ItemAdapter.onItemClickedL
 
         adapter = new ItemAdapter(productList,this,getContext());
         adapter.notifyDataSetChanged();
-        homeRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        homeRV.setLayoutManager(llm);
         homeRV.hasFixedSize();
         homeRV.setAdapter(adapter);
 

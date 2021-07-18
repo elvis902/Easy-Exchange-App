@@ -28,9 +28,10 @@ public class NotificationServiceClass extends Service {
 
     private DatabaseReference databaseReference;
     private String userId;
+    SharedPrefManager manager;
     @Override
     public void onCreate() {
-        SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
+        manager=new SharedPrefManager(getApplicationContext());
         userId=manager.getValue(Constants.USER_ID);
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Chat-Rooms");
         Intent notificationIntent=new Intent(this, SplashScreen.class);
@@ -53,16 +54,13 @@ public class NotificationServiceClass extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-        Query query=databaseReference.orderByChild("search").startAt("/"+userId+"/");
-        query.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    System.out.println("ROOMS: "+dataSnapshot.getKey());
-                    if(dataSnapshot.hasChild("sender")){
+                    if(dataSnapshot.getKey().contains(userId)&&dataSnapshot.hasChild("sender")){
                         String val=dataSnapshot.child("sender").getValue(String.class);
-                        System.out.println("DEBUG: "+val);
+                        System.out.println("SENDER: "+val);
                         if(!val.equals("")){
                             if(!val.equals(userId)){
                                 Intent intent1=new Intent(getApplicationContext(),NotificationReceiver.class);

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyConversations extends RecyclerView.Adapter<MyConversations.MyViewHolder> {
-    DatabaseReference usernameRef;
+    private DatabaseReference usernameRef;
     List<MyChatRecord> chatRecordList=new ArrayList<>();
     private Context context;
 
@@ -58,13 +58,14 @@ public class MyConversations extends RecyclerView.Adapter<MyConversations.MyView
                 launchChatActivity(currentUser.getChatRoomID(),currentUser.getSender());
             }
         });
-        usernameRef.child(currentUser.getSender()).addValueEventListener(new ValueEventListener() {
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot tempSnap: snapshot.getChildren()){
                     if(tempSnap.getKey().equals("userName")){
                         holder.profName.setText(tempSnap.getValue(String.class));
-                    }else if(tempSnap.getKey().equals("profile_image")){
+                    }
+                    if(tempSnap.getKey().equals("profile_image")){
                         Picasso.get().load(tempSnap.getValue(String.class))
                                 .fit()
                                 .centerInside()
@@ -77,7 +78,8 @@ public class MyConversations extends RecyclerView.Adapter<MyConversations.MyView
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        };
+        usernameRef.child(currentUser.getSender()).addValueEventListener(eventListener);
     }
 
     @Override

@@ -52,6 +52,7 @@
                     android:layout_marginStart="138dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/montserrat_medium"
+                    android:textStyle="bold"
                     android:maxEms="100"
                     android:maxLines="1"
                     android:text="Price"

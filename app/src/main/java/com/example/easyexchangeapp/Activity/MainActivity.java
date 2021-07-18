@@ -54,18 +54,6 @@ public class MainActivity extends AppCompatActivity{
         Intent notificationServiceIntent=new Intent(this, NotificationServiceClass.class);
         startService(notificationServiceIntent);
 
-
-        //price = getResources().getStringArray(R.array.price);
-        //description = getResources().getStringArray(R.array.description);
-        //address = getResources().getStringArray(R.array.address);
-
-        //ItemAdapter itemAdapter = new ItemAdapter(this, price, description, address, images);
-
-//        recyclerView = findViewById(R.id.home_item_recycle_view);
-//        recyclerView.setAdapter(itemAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
 
@@ -81,7 +69,7 @@ public class MainActivity extends AppCompatActivity{
     public  boolean onOptionsItemSelected (MenuItem item) {
         switch (item.getItemId()) {
             case  R.id.edit_profile:
-                Toast.makeText(this, "Edit Profile",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,EditProfileActivity.class));
                 return true;
 
             case  R.id.setting:
