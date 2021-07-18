@@ -60,7 +60,6 @@ public class HomeFragment extends Fragment implements ItemAdapter.onItemClickedL
                 for(DataSnapshot prodSnap : snapshot.getChildren()){
                     Product tempModel = prodSnap.getValue(Product.class);
                     productList.add(tempModel);
-                    System.out.print("TEST: "+tempModel.getItemKey());
                 }
                 Collections.reverse(productList);
                 adapter.notifyDataSetChanged();
