@@ -69,7 +69,8 @@ public class ChatActivity extends AppCompatActivity {
         chatRoomId=intent.getStringExtra("chat-room");
         userId=manager.getValue(Constants.USER_ID);
         chatAdapter = new ChatAdapter(getApplicationContext(),chatList);
-        chatRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        chatRV.setLayoutManager(llm);
         chatRV.hasFixedSize();
         chatRV.setAdapter(chatAdapter);
 
@@ -106,6 +107,7 @@ public class ChatActivity extends AppCompatActivity {
                         chatList.add(temp.getValue(ChatModel.class));
                     }
                 }
+                chatRV.scrollToPosition(chatList.size()-1);
                 chatAdapter.notifyDataSetChanged();
             }
 

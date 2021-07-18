@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity{
     public  boolean onOptionsItemSelected (MenuItem item) {
         switch (item.getItemId()) {
             case  R.id.edit_profile:
-                Toast.makeText(this, "Edit Profile",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,EditProfileActivity.class));
                 return true;
 
             case  R.id.setting:

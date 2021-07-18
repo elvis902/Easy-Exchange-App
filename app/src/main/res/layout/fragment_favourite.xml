@@ -5,23 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.FavouriteFragment">
 
-        <TextView
-            android:id="@+id/fragmentNameTV_fav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="20dp"
-            android:text="Favourite Items"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favFragment_RV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/fragmentNameTV_fav"/>
-
-
-
+            android:layout_height="match_parent"/>
 </RelativeLayout>
