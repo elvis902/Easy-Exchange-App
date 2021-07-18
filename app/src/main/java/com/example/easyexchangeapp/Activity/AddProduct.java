@@ -135,11 +135,13 @@ public class AddProduct extends AppCompatActivity {
         String prodName=productName.getText().toString();
         String prodDescription=productDescription.getText().toString();
         String prodPrice= productPrice.getText().toString();
+        String prodAddress=productAddress.getText().toString();
 
         if(filePath!=null&&
             !prodName.equals("")&&
             !prodPrice.equals("")&&
-            !prodDescription.equals("")){
+            !prodDescription.equals("") &&
+        !prodAddress.equals("")){
             //progressBar.setVisibility(View.VISIBLE);
             String finalProdPrice = "Rs " + prodPrice;
             final String uploadId=databaseReference.push().getKey();
@@ -191,15 +193,23 @@ public class AddProduct extends AppCompatActivity {
                     });
         }else if(prodName.equals("")){
             Toast.makeText(AddProduct.this,"Please add product name!",Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
         else if(prodPrice.equals("")){
             Toast.makeText(AddProduct.this,"Please add product price!",Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
         else if(prodDescription.equals("")){
             Toast.makeText(AddProduct.this,"Please add product description!",Toast.LENGTH_SHORT).show();
+            pd.dismiss();
+        }else if(prodAddress.equals("")){
+
+            Toast.makeText(AddProduct.this,"Please add product location!",Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
         else{
             Toast.makeText(AddProduct.this,"File not selected!",Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
 
     }
