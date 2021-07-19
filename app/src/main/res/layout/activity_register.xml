@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,51 +10,60 @@
 
     <ImageView
         android:id="@+id/imageViewSignupMan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="94dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="93dp"
-        android:src="@drawable/man_signup" />
+        android:layout_marginTop="24dp"
+        android:src="@drawable/man_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageViewSignupMan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/montserrat_semibold"
         android:text="Sign up"
         android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSignupMan" />
 
     <TextView
         android:id="@+id/textViewGreetingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSignUp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="Hey! Good to see you"
         android:textColor="@color/offBlack"
-        android:textSize="18dp" />
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
 
     <LinearLayout
         android:id="@+id/textFieldsHolder"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewGreetingText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:orientation="vertical">
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewGreetingText">
 
 
         <EditText
             android:id="@+id/editTextPersonName"
             android:layout_width="252dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:background="@drawable/custom_textfield"
             android:ems="10"
@@ -66,7 +76,7 @@
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="252dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="14dp"
             android:background="@drawable/custom_textfield"
@@ -80,7 +90,7 @@
         <EditText
             android:id="@+id/editTextPhoneNumber"
             android:layout_width="252dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="14dp"
             android:background="@drawable/custom_textfield"
@@ -94,7 +104,7 @@
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="252dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="14dp"
             android:background="@drawable/custom_textfield"
@@ -108,7 +118,7 @@
         <EditText
             android:id="@+id/editTextConfirmPassword"
             android:layout_width="252dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="14dp"
             android:background="@drawable/custom_textfield"
@@ -118,44 +128,53 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColorHint="@color/offBlack" />
-    </LinearLayout>
 
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonSignUp"
-        android:layout_width="153dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/textFieldsHolder"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:background="@color/magenta_0"
         android:fontFamily="@font/montserrat_semibold"
         android:text="CREATE"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFieldsHolder" />
 
-    <TextView
-        android:id="@+id/textViewAccount"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonSignUp"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Already have an account ? "
-        android:textColor="@color/offBlack"
-        android:textSize="14dp" />
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonSignUp"
+        android:layout_marginTop="12dp">
 
-    <TextView
-        android:id="@+id/loginTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonSignUp"
-        android:layout_marginTop="14dp"
-        android:layout_toRightOf="@id/textViewAccount"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Login"
-        android:textColor="@color/magenta_0" />
+        <TextView
+            android:id="@+id/textViewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/montserrat_medium"
+            android:maxLines="1"
+            android:text="Already have an account ? "
+            android:textColor="@color/offBlack"
+            android:textSize="14dp" />
 
+        <TextView
+            android:id="@+id/loginTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Login"
+            android:textColor="@color/magenta_0"
+            android:textSize="16sp"/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,19 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.login_btn);
         mLoginTextView = findViewById(R.id.not_have_account);
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser();
-            }
-        });
+        mLoginBtn.setOnClickListener(v -> loginUser());
 
-        mLoginTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                finish();
-            }
+        mLoginTextView.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            finish();
         });
     }
 
