@@ -33,49 +33,58 @@
             android:padding="5dp"
             android:src="@mipmap/ic_launcher_round" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:layout_marginLeft="15dp"
-            android:orientation="vertical">
-
-            <LinearLayout
+            android:layout_height="match_parent">
+            <!--LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="6dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/itemPrice"
-                    android:layout_width="170dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="138dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textStyle="bold"
-                    android:maxEms="100"
-                    android:maxLines="1"
-                    android:text="Price"
-                    android:textColor="@color/black"
-                    android:textSize="22sp" />
+                    android:orientation="horizontal"-->
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:maxEms="100"
+                android:maxLines="1"
+                android:text="Price"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
 
 
-                <ImageView
-                    android:id="@+id/nextButton"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginTop="17dp"
-                    android:clickable="true"
-                    android:src="@drawable/arrow" />
+            <ImageView
+                android:id="@+id/nextButton"
+                android:layout_width="22dp"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="17dp"
+                android:clickable="true"
+                android:src="@drawable/arrow" />
 
-            </LinearLayout>
+            <!--/LinearLayout-->
 
 
             <TextView
                 android:id="@+id/itemDescription"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintTop_toBottomOf="@id/itemPrice"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="138dp"
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
@@ -86,49 +95,58 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <LinearLayout
+            <!--LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"-->
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="23dp"
-                    android:layout_marginLeft="138dp"
-                    android:layout_marginTop="1dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/placeholder" />
+            <ImageView
+                android:id="@+id/location"
+                android:layout_width="16dp"
+                android:layout_height="23dp"
+                card_view:layout_constraintTop_toBottomOf="@id/itemDescription"
+                card_view:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/placeholder" />
 
-                <TextView
-                    android:id="@+id/itemAddress"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="3dp"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/roboto_light"
-                    android:maxEms="200"
-                    android:maxLines="1"
-                    android:text="Address"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+            <TextView
+                android:id="@+id/itemAddress"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintTop_toBottomOf="@id/itemDescription"
+                card_view:layout_constraintEnd_toStartOf="@id/bookmark"
+                card_view:layout_constraintStart_toEndOf="@id/location"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_light"
+                android:maxEms="200"
+                android:maxLines="1"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-                <ImageView
-                    android:id="@+id/bookmark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="1dp"
-                    android:clickable="true"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/bookmark" />
+            <ImageView
+                android:id="@+id/bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintTop_toBottomOf="@id/itemDescription"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/bookmark" />
 
-            </LinearLayout>
+            <!--/LinearLayout>
 
-        </LinearLayout>
-
+        </LinearLayout-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 
