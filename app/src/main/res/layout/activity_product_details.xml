@@ -183,7 +183,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/montserrat_medium"
                     android:padding="2dp"
-                    android:text="$ 23.8"
+                    android:text="Rs. 23.8"
                     android:textColor="#000000"
                     android:textSize="16dp" />
             </LinearLayout>
