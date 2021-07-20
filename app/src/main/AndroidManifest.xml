@@ -33,7 +33,8 @@
             android:theme="@style/Theme.EasyExchangeApp"/>
         <activity
             android:name=".Activity.LoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
         <activity android:name=".Activity.MainActivity"
             android:theme="@style/Theme.EasyExchangeApp"/>
         <activity android:name=".Activity.RegisterActivity" />
