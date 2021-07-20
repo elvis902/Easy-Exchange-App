@@ -34,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getWindow().setBackgroundDrawableResource(R.drawable.loginbgr);
+        getSupportActionBar().hide();
 
         nameET = findViewById(R.id.editTextPersonName);
         emailET = findViewById(R.id.editTextEmail);

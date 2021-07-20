@@ -67,12 +67,11 @@
 
             <android.widget.Button
                 android:id="@+id/login_btn"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="70dp"
-                android:background="@android:color/darker_gray"
+                android:background="@drawable/rounded_corners"
                 android:backgroundTint="@color/magenta_0"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="LOGIN"
