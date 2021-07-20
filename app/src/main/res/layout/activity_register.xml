@@ -136,8 +136,8 @@
 
         <Button
             android:id="@+id/buttonSignUp"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:background="@color/magenta_0"
