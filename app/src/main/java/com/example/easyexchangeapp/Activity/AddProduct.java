@@ -55,6 +55,7 @@ public class AddProduct extends AppCompatActivity {
 
     private String currentUserName,currentUserEmail,currentUserId;
 
+
     private Uri filePath;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
