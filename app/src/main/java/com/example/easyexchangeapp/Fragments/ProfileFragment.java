@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1
-                && resultCode == RESULT_OK
+                && resultCode == -1
                 && data != null
                 && data.getData() != null) {
             imageFilePath = data.getData();
@@ -164,7 +164,7 @@ public class ProfileFragment extends Fragment {
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                reference.child("profile_image").setValue(imageFilePath.toString());
+                                reference.child("profile_image").setValue(uri.toString());
                             }
                         });
                     }
