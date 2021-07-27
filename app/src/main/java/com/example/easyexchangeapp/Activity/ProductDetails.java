@@ -87,7 +87,7 @@ public class ProductDetails extends AppCompatActivity {
                 for(DataSnapshot temp: snapshot.getChildren()){
                     chatRoomIds.put(temp.getKey(),temp.getKey());
                 }
-                if(!chatRoomIds.containsKey(userId+"**"+clientId)&&!chatRoomIds.containsKey(clientId+"--"+userId)){
+                if(!chatRoomIds.containsKey(userId+"--"+clientId)&&!chatRoomIds.containsKey(clientId+"--"+userId)){
                     chatRoomId=userId+"--"+clientId;
                     chatReference.child(chatRoomId).setValue(chatRoomId);
                     databaseReference.child(clientId).child("chatRooms").child(chatRoomId).setValue(chatRoomId);

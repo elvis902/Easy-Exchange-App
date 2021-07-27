@@ -60,7 +60,6 @@ public class NotificationServiceClass extends Service {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     if(dataSnapshot.getKey().contains(userId)&&dataSnapshot.hasChild("sender")){
                         String val=dataSnapshot.child("sender").getValue(String.class);
-                        System.out.println("SENDER: "+val);
                         if(!val.equals("")){
                             if(!val.equals(userId)){
                                 Intent intent1=new Intent(getApplicationContext(),NotificationReceiver.class);
