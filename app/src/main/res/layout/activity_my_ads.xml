@@ -30,7 +30,7 @@
         android:id="@+id/myAds_RV"
         android:layout_below="@id/myAds_userMail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
   </RelativeLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>

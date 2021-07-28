@@ -1,6 +1,8 @@
 package com.example.easyexchangeapp.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +25,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +39,14 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
     private List<Product> favItems;
     private Context mContext;
     private OnFavItemClickListener clickListener;
+    private Integer indicator;
+    private AlertDialog.Builder builder;
 
-    public FavItemAdapter(List<Product> favItems, Context mContext, OnFavItemClickListener clickListener) {
+    public FavItemAdapter(List<Product> favItems, Context mContext, OnFavItemClickListener clickListener, Integer indicator) {
         this.favItems = favItems;
         this.mContext = mContext;
         this.clickListener = clickListener;
+        this.indicator = indicator;
     }
 
     @NonNull
@@ -63,10 +74,54 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteBookmark(favItems.get(position).getItemKey());
-                Toast.makeText(mContext, "Bookmark Delete", Toast.LENGTH_SHORT).show();
+
+                if(indicator==1){
+                    deleteBookmark(favItems.get(position).getItemKey());
+                    Toast.makeText(mContext, "Bookmark Deleted", Toast.LENGTH_SHORT).show();
+                }
+                if(indicator==2){
+                    if(position >= 0 && position<getItemCount()){
+                        deleteProduct(favItems.get(position));
+                    }
+                }
             }
         });
+    }
+
+    private void deleteProduct(Product item_product) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().
+                child("uploaded_products").child(item_product.getItemKey());
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        builder = new AlertDialog.Builder(mContext);
+        builder.setMessage("Do you want to delete the product ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        StorageReference imageRef=storage.getReferenceFromUrl(item_product.getImageUrl());
+                        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                databaseReference.removeValue();
+                                Toast.makeText(mContext,"Successfully deleted the product!",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(mContext,"Failed To delete!",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        dialog.cancel();
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.setTitle("Delete the post?");
+        alert.show();
     }
 
     private void deleteBookmark(String itemKey) {

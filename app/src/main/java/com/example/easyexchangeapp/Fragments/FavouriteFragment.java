@@ -67,7 +67,7 @@ public class FavouriteFragment extends Fragment implements FavItemAdapter.OnFavI
         //Getting the fav items
 
         //Putting into the RV
-        favItemAdapter = new FavItemAdapter(favItemsList,getContext(),this);
+        favItemAdapter = new FavItemAdapter(favItemsList,getContext(),this,Constants.INDICATOR_FAV);
         favItemAdapter.notifyDataSetChanged();
         favItemsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         favItemsRV.hasFixedSize();

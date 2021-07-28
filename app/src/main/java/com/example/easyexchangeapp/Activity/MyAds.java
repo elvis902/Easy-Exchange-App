@@ -50,7 +50,7 @@ public class MyAds extends AppCompatActivity implements FavItemAdapter.OnFavItem
         //Fetch My Ads
         getMyAds();
 
-        adapter = new FavItemAdapter(myAdsList, this,this);
+        adapter = new FavItemAdapter(myAdsList, this,this,Constants.INDICATOR_MY_ADDS);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.hasFixedSize();
         recyclerView.setAdapter(adapter);
