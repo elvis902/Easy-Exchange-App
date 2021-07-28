@@ -1,6 +1,7 @@
 package com.example.easyexchangeapp.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.easyexchangeapp.Adapters.FavItemAdapter;
 import com.example.easyexchangeapp.Adapters.ItemAdapter;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.Product;
@@ -22,11 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAds extends AppCompatActivity implements ItemAdapter.onItemClickedListener {
+public class MyAds extends AppCompatActivity implements FavItemAdapter.OnFavItemClickListener {
     private  String userMail;
     private TextView mail;
     private RecyclerView recyclerView;
-    private ItemAdapter adapter;
+    private FavItemAdapter adapter;
     private DatabaseReference reference;
     private List<Product> myAdsList = new ArrayList<>();
 
@@ -35,6 +37,9 @@ public class MyAds extends AppCompatActivity implements ItemAdapter.onItemClicke
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_ads);
         getSupportActionBar().setTitle("My Ads");
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
         userMail = getIntent().getStringExtra("user_mail");
         mail = findViewById(R.id.myAds_userMail);
         mail.setText(userMail);
@@ -45,7 +50,7 @@ public class MyAds extends AppCompatActivity implements ItemAdapter.onItemClicke
         //Fetch My Ads
         getMyAds();
 
-        adapter = new ItemAdapter(myAdsList, this, getApplicationContext());
+        adapter = new FavItemAdapter(myAdsList, this,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.hasFixedSize();
         recyclerView.setAdapter(adapter);
@@ -75,11 +80,17 @@ public class MyAds extends AppCompatActivity implements ItemAdapter.onItemClicke
     }
 
     @Override
-    public void onNextClicked(int position) {
+    public void onFavClicked(int position) {
         Intent intent = new Intent(this,ProductDetails.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("item_bundle",myAdsList.get(position));
         intent.putExtras(bundle);
         startActivity(intent);
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

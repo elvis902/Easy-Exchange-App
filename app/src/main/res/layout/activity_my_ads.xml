@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semibold"
         android:padding="5dp"
+        android:visibility="gone"
         android:text="UserMail"
         android:textAlignment="center"
         android:textColor="@color/blue_1"
@@ -29,8 +30,7 @@
         android:id="@+id/myAds_RV"
         android:layout_below="@id/myAds_userMail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="wrap_content"/>
   </RelativeLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
