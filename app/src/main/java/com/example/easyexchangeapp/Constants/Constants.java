@@ -8,4 +8,6 @@ public class Constants {
     public static String LOGIN_EMAIL="user_email";
     public static String LOGIN_PASS="user_pass";
     public static String STORAGE_LOCATION="uploaded_products";
+    public static Integer INDICATOR_FAV=1;
+    public static Integer INDICATOR_MY_ADDS=2;
 }

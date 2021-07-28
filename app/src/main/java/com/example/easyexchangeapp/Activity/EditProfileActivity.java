@@ -51,6 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button update_pass;
     private ImageButton backButton;
 
+    private Integer pass_counter;
     private RegisterUser user_class;
 
     @Override
@@ -58,6 +59,7 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        pass_counter=0;
         auth = FirebaseAuth.getInstance();
         curr_user = auth.getCurrentUser();
         userId = curr_user.getUid();
@@ -82,13 +84,17 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        if(pass_counter==0){
+            update_pass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        updatePassword();
+                        pass_counter=1;
+                        update_pass.setEnabled(false);
+                }
+            });
+        }
 
-        update_pass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatePassword();
-            }
-        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
