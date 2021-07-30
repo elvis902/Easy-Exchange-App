@@ -75,23 +75,6 @@
                 app:layout_constraintVertical_bias="0.19">
 
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/edit_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginTop="80dp"
-                    android:backgroundTint="#D15046"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:src="@drawable/camera"
-                    app:backgroundTint="#D15046"
-                    app:fabCustomSize="35dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/profile_pic"
                     android:layout_width="110dp"
@@ -229,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="56dp"
-        android:backgroundTint="@color/yellow_3"
+        android:backgroundTint="@color/magenta_0"
         android:text="Change Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
