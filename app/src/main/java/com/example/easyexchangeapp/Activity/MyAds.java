@@ -1,17 +1,16 @@
 package com.example.easyexchangeapp.Activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.example.easyexchangeapp.Adapters.FavItemAdapter;
-import com.example.easyexchangeapp.Adapters.ItemAdapter;
 import com.example.easyexchangeapp.Constants.Constants;
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
@@ -60,9 +59,9 @@ public class MyAds extends AppCompatActivity implements FavItemAdapter.OnFavItem
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myAdsList.clear();
                 for(DataSnapshot mySnap : snapshot.getChildren()){
                     Product tempProd = mySnap.getValue(Product.class);
-                    System.out.println(tempProd.getSellerName() + " -- " + tempProd.getItemKey());
                     if(tempProd.getSellerEmail().equals(userMail)){
                         myAdsList.add(tempProd);
                     }
@@ -76,7 +75,7 @@ public class MyAds extends AppCompatActivity implements FavItemAdapter.OnFavItem
             }
         };
 
-        reference.addListenerForSingleValueEvent(eventListener);
+        reference.addValueEventListener(eventListener);
     }
 
     @Override

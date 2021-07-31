@@ -46,6 +46,7 @@ import java.util.EventListener;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
+import static java.security.AccessController.getContext;
 
 public class ProfileFragment extends Fragment {
 

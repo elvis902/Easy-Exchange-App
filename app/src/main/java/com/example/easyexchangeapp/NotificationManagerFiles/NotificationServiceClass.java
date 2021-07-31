@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+
 import static com.example.easyexchangeapp.NotificationManagerFiles.AppClass.Channel_ID;
 
 public class NotificationServiceClass extends Service {
@@ -43,7 +45,6 @@ public class NotificationServiceClass extends Service {
                 .setSmallIcon(R.drawable.logo_transparent)
                 .setContentIntent(pendingIntent)
                 .build();
-
         startForeground(101,notification);
     }
 
