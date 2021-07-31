@@ -1,11 +1,8 @@
 package com.example.easyexchangeapp.Fragments;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -24,8 +21,7 @@ import android.widget.Toast;
 
 import com.example.easyexchangeapp.Activity.EditProfileActivity;
 import com.example.easyexchangeapp.Activity.MyAds;
-import com.example.easyexchangeapp.BuildConfig;
-import com.example.easyexchangeapp.Constants.Constants;
+import com.example.easyexchangeapp.ImageCompressor.Compressor;
 import com.example.easyexchangeapp.Models.RegisterUser;
 import com.example.easyexchangeapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,14 +39,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.util.EventListener;
-import java.util.Objects;
-
-import static android.app.Activity.RESULT_OK;
-import static java.security.AccessController.getContext;
 
 public class ProfileFragment extends Fragment {
 
@@ -165,14 +154,15 @@ public class ProfileFragment extends Fragment {
 
     private void uploadImage(Uri imageFilePath) throws IOException {
             if(imageFilePath!=null){
-                Bitmap bmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imageFilePath);
+                /*Bitmap bmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imageFilePath);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bmp.compress(Bitmap.CompressFormat.JPEG,25,baos);
-                byte[] data = baos.toByteArray();
+                byte[] data = baos.toByteArray();*/
+                Compressor compressor = new Compressor(imageFilePath,getActivity());
                 final String userUid = auth.getUid();
                 final StorageReference storageReference = storageRef.child(userUid + ".jpg");
                 storageReference.delete();
-                storageTask = storageReference.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                storageTask = storageReference.putBytes(compressor.compressImage()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

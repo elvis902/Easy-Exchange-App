@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.easyexchangeapp.Constants.Constants;
+import com.example.easyexchangeapp.ImageCompressor.Compressor;
 import com.example.easyexchangeapp.Models.Product;
 import com.example.easyexchangeapp.R;
 import com.example.easyexchangeapp.SharedPrefManager.SharedPrefManager;
@@ -106,7 +107,11 @@ public class AddProduct extends AppCompatActivity {
                     Toast.makeText(AddProduct.this,"Please wait upload in progress",Toast.LENGTH_SHORT).show();
                 }else{
                     pd.show();
-                    saveImage();
+                    try {
+                        saveImage();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -132,7 +137,7 @@ public class AddProduct extends AppCompatActivity {
         startActivityForResult(galleryIntent, 1);
     }
 
-    public void saveImage(){
+    public void saveImage() throws IOException {
         String prodName=productName.getText().toString();
         String prodDescription=productDescription.getText().toString();
         String prodPrice= productPrice.getText().toString();
@@ -147,7 +152,8 @@ public class AddProduct extends AppCompatActivity {
             String finalProdPrice = "Rs " + prodPrice;
             final String uploadId=databaseReference.push().getKey();
             final StorageReference fileReference=storageReference.child(uploadId+"."+getFileExtension(filePath));
-            storageTask=fileReference.putFile(filePath)
+            Compressor compressor = new Compressor(filePath,getApplicationContext());
+            storageTask=fileReference.putBytes(compressor.compressImage())
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
