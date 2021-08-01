@@ -152,6 +152,7 @@
             android:fontFamily="@font/montserrat_medium"
             android:text="or connect with"
             android:textColor="@color/offBlack"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
@@ -174,7 +175,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fb_button_background"
                 android:scaleType="centerInside"
-                android:src="@drawable/fb" />
+                android:src="@drawable/fb"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/twitter_login_btn"
@@ -183,7 +185,8 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/twitter_button_background"
                 android:scaleType="centerInside"
-                android:src="@drawable/twitter" />
+                android:src="@drawable/twitter"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/google_login_btn"
@@ -192,7 +195,8 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/google_button_background"
                 android:scaleType="centerInside"
-                android:src="@drawable/google" />
+                android:src="@drawable/google"
+                android:visibility="invisible" />
 
 
         </LinearLayout>
