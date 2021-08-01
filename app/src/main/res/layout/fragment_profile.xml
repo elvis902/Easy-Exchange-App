@@ -16,7 +16,7 @@
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="376dp"
-            android:layout_height="310dp"
+            android:layout_height="270dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,9 +126,10 @@
                         android:layout_marginBottom="2dp"
                         android:fontFamily="@font/montserrat_medium"
                         android:textColor="#505050"
-                        android:textSize="15sp"
+                        android:textSize="13dp"
                         app:layout_constraintBottom_toTopOf="@+id/profile_email_id"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.496"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
@@ -143,37 +144,16 @@
                         android:layout_marginStart="50dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="2dp"
                         android:fontFamily="@font/montserrat_medium"
                         android:maxEms="200"
                         android:maxLines="1"
                         android:textColor="#505050"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/profile_address"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.42"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_phone_no" />
-
-                    <TextView
-                        android:id="@+id/profile_address"
-                        style="@style/Widget.AppCompat.TextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/profile_email_id"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:maxEms="200"
-                        android:maxLines="1"
-                        android:textColor="#505050"
-                        android:textSize="16sp"
+                        android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.416"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_email_id" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_phone_no" />
 
                     <ImageView
                         android:id="@+id/call_icon"
@@ -185,10 +165,10 @@
                         android:contentDescription="TODO"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.03"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.75"
+                        app:layout_constraintVertical_bias="0.89"
                         app:srcCompat="@android:drawable/ic_menu_call"
                         app:tint="#090808" />
 
@@ -201,27 +181,11 @@
                         android:contentDescription="TODO"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.03"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.85"
+                        app:layout_constraintVertical_bias="1.0"
                         app:srcCompat="@android:drawable/ic_dialog_email"
-                        app:tint="#505050" />
-
-                    <ImageView
-                        android:id="@+id/address_icon"
-                        android:layout_width="20dp"
-                        android:layout_height="18dp"
-                        android:layout_below="@+id/profile_email_id"
-                        android:layout_toStartOf="@+id/profile_address"
-                        android:contentDescription="TODO"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.95"
-                        app:srcCompat="@drawable/placeholder"
                         app:tint="#505050" />
 
 
@@ -257,30 +221,30 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
-                    app:cardCornerRadius="10dp"
+                    app:cardCornerRadius="20dp"
                     app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:weightSum="4"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:weightSum="4">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="Edit Profile"
                             android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:gravity="center_vertical"
+                            android:text="Edit Profile"
                             android:textSize="18dp" />
 
                         <ImageView
                             android:id="@+id/profile_to_edit"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitEnd"
                             android:layout_weight="3"
+                            android:scaleType="fitEnd"
                             android:src="@drawable/next_icon" />
 
                     </LinearLayout>
@@ -326,24 +290,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="10dp"
+                    app:cardCornerRadius="20dp"
                     app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:weightSum="4"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:weightSum="4">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:fontFamily="@font/montserrat_medium"
                             android:gravity="center_vertical"
-                            android:layout_weight="1"
                             android:text="My Ads"
                             android:textSize="18dp" />
 
@@ -351,8 +316,8 @@
                             android:id="@+id/profile_to_myAds"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitEnd"
                             android:layout_weight="3"
+                            android:scaleType="fitEnd"
                             android:src="@drawable/next_icon" />
 
                     </LinearLayout>

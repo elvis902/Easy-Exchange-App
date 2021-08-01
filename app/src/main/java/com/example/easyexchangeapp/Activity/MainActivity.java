@@ -72,10 +72,6 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(new Intent(this,EditProfileActivity.class));
                 return true;
 
-            case  R.id.setting:
-                Toast.makeText(this, "Settings",Toast.LENGTH_SHORT).show();
-                return true;
-
             case  R.id.logout:{
                 mAuth.signOut();
                 SharedPrefManager manager=new SharedPrefManager(getApplicationContext());

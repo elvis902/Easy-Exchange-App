@@ -5,10 +5,6 @@
         android:title="Edit Profile"/>
 
     <item
-        android:id="@+id/setting"
-        android:title="Settings"/>
-
-    <item
         android:id="@+id/logout"
         android:title="Logout"/>
 
