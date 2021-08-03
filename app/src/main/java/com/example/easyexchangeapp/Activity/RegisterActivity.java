@@ -89,16 +89,21 @@ public class RegisterActivity extends AppCompatActivity {
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        FirebaseUser user = task.getResult().getUser();
-                                        makeUser(registerUser, user.getUid());
-                                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                                        finish();
+                                        if(task.isSuccessful()){
+                                            FirebaseUser user = task.getResult().getUser();
+                                            System.out.println(user);
+                                            makeUser(registerUser, user.getUid());
+                                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                            finish();
+                                        }else {
+                                            Toast.makeText(getApplicationContext(),"User already registered with this Email!",Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(getApplicationContext(),"An unexpected error occurred",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"An unexpected error occurred",Toast.LENGTH_SHORT).show();
                                     }
                                 });
                 }else{
