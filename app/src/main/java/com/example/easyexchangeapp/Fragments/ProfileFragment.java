@@ -192,6 +192,8 @@ public class ProfileFragment extends Fragment {
                 picUrl = user.getProfile_image();
                 Picasso.get().
                         load(picUrl).
+                        placeholder(R.drawable.man_signup)
+                        .error(R.drawable.man_signup).
                         fit().
                         centerInside().
                         into(profilePic);

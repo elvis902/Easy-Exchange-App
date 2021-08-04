@@ -158,10 +158,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     edit_num.setText(user_class.getUserPhoneNo());
                     picUrl = user_class.getProfile_image();
                     Picasso.get().
-                            load(picUrl).
-                            fit().
-                            centerInside().
-                            into(profilePic);
+                            load(picUrl)
+                            .placeholder(R.drawable.man_signup)
+                            .error(R.drawable.man_signup)
+                            .fit()
+                            .centerInside()
+                            .into(profilePic);
             }
 
             @Override
