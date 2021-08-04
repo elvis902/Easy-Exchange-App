@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, "Please wait....Logging you in", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         SharedPrefManager manager=new SharedPrefManager(getApplicationContext());
+        manager.clearAll();
         manager.storeKeyValuePair(Constants.USER_ID,firebaseUser.getUid());
         manager.storeKeyValuePair(Constants.USER_EMAIL,email);
         manager.storeKeyValuePair(Constants.USER_NAME,name);
@@ -107,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 firebaseUser=task.getResult().getUser();
+                                mAuth.updateCurrentUser(firebaseUser);
                                 searchUser(firebaseUser.getUid());
                             }else{
                                 Toast.makeText(getApplicationContext(), "Please enter valid credentials", Toast.LENGTH_SHORT).show();

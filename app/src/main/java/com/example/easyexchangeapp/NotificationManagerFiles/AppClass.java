@@ -8,11 +8,9 @@ import android.os.Build;
 public class AppClass extends Application {
     public static final String Channel_ID="notificationServiceChannel";
 
-
     @Override
     public void onCreate() {
         super.onCreate();
-
         createNotificationChannel();
     }
 

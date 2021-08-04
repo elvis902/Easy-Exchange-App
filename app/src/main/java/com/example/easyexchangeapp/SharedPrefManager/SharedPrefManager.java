@@ -25,6 +25,6 @@ public class SharedPrefManager {
     }
 
     public void clearAll(){
-        context.getSharedPreferences(PREF_NAME, 0).edit().clear().commit();
+        context.getSharedPreferences(PREF_NAME,0).edit().clear().apply();
     }
 }
