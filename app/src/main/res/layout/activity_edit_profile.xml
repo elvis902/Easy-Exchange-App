@@ -11,13 +11,13 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="570dp"
+        android:drawableTint="@color/white"
         android:fontFamily="@font/montserrat_semibold"
         android:text="@string/edit_profile"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:drawableTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="25dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="6dp"
@@ -112,7 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="25dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="6dp"
@@ -168,7 +168,6 @@
                 app:layout_constraintHorizontal_bias="0.533"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit1" />
-
 
 
             <EditText
@@ -244,7 +243,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="2dp"
         android:backgroundTint="#00FFFFFF"
