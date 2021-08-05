@@ -89,8 +89,14 @@ public class MainActivity extends AppCompatActivity{
             case  R.id.logout:{
                 manager.clearAll();
                 stopService(notificationServiceIntent);
+                mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
+                        if(firebaseAuth.getCurrentUser()==null)
+                            Process.killProcess(Process.myPid());
+                    }
+                });
                 mAuth.signOut();
-                signOutUser();
             }
 
             default:
@@ -98,10 +104,10 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void signOutUser() {
-        Intent loginActivity = new Intent(MainActivity.this, LoginActivity.class);
-        loginActivity.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(loginActivity);
-    }
+//    private void signOutUser() {
+//        Intent loginActivity = new Intent(MainActivity.this, LoginActivity.class);
+//        loginActivity.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(loginActivity);
+//    }
 }
 

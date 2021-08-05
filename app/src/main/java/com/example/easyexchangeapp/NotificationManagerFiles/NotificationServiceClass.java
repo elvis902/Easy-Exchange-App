@@ -74,7 +74,6 @@ public class NotificationServiceClass extends Service {
                         }
                         if(dataSnapshot.getKey().contains(userId)&&dataSnapshot.hasChild("sender")){
                             if(!compare(val,userId)){
-                                System.out.println("XYZ: New Message Detected! from "+val+" to "+userId);
                                 intent1.putExtra("username",val);
                                 sendBroadcast(intent1);
                                 databaseReference.child(dataSnapshot.getKey()).child("sender").setValue(null);

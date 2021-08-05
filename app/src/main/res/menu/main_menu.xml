@@ -6,6 +6,6 @@
 
     <item
         android:id="@+id/logout"
-        android:title="Logout"/>
+        android:title="Logout and Exit" />
 
 </menu>
