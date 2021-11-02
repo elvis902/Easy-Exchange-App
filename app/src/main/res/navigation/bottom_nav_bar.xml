@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.easyexchangeapp.Fragments.HomeFragment"
+        android:name="gdscnits.easyexchange.app.Fragments.HomeFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_chats"
-        android:name="com.example.easyexchangeapp.Fragments.ChatFragment"
+        android:name="gdscnits.easyexchange.app.Fragments.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_favourites"
-        android:name="com.example.easyexchangeapp.Fragments.FavouriteFragment"
+        android:name="gdscnits.easyexchange.app.Fragments.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.easyexchangeapp.Fragments.ProfileFragment"
+        android:name="gdscnits.easyexchange.app.Fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action

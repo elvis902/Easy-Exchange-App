@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:803499365991:android:cc131c51fbb19777f6a6c2",
         "android_client_info": {
-          "package_name": "com.example.easyexchangeapp"
+          "package_name": "gdscnits.easyexchange.app"
         }
       },
       "oauth_client": [

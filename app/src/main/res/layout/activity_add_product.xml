@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/add_bck"
     android:orientation="vertical"
-    tools:context=".Activity.AddProduct">
+    tools:context="gdscnits.easyexchange.app.Activity.AddProduct">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
