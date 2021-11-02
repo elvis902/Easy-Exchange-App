@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/add_product_bg"
-    tools:context=".Activity.EditProfileActivity">
+    tools:context="gdscnits.easyexchange.app.Activity.EditProfileActivity">
 
     <TextView
         android:id="@+id/textView7"
