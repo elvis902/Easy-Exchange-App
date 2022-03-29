@@ -67,7 +67,7 @@ public class NotificationServiceClass extends Service {
                         if(val==null||compare(val,userId)){
                             continue;
                         }
-                        if(dataSnapshot.getKey().contains(userId)&&dataSnapshot.hasChild("sender")){
+                        else if(dataSnapshot.getKey().contains(userId)&&dataSnapshot.hasChild("sender")){
                             if(!compare(val,userId)){
                                 intent1.putExtra("username",val);
                                 sendBroadcast(intent1);
